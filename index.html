@@ -1,215 +1,725 @@
-<!DOCTYPE html><html lang="sq"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Inventari"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#16241E"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADu0lEQVR4nO3dsVEbURSG0cVDDYSQEBMrcAs0QeCiCNyEWyAgpgP3QeCAGQ1j6V8EaHfvfXNO6MB7pfft1Wqwh4ur2+sJjvmx9QDUJQ4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxEl1sPsIiX5+f1L3q3261/0UVdDPZfEzbJ4r2REvGxQjRUHJuvjSIznMtQcXBe4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIiGiqPCj8srzHAuQ8XBeQ0VR4Ufl1eY4VzGiaPOqdSZ5JtG+GeCZQ+j+/NH+81Rtoyp9myn6L05Pnz3V7h3K8ywkMZxzJ/KykdSaphz6RrHzGFseBI1p/qylnGkMyhyAMXHO137B9K9Om99nUm+qV8cR+/LaudxdJ52X16axdGijDcD9NEsDtbUPo6aa+NN5dlO0SmOXjs5afQqOsVxqP6tWX/CGb3jYFFt4jjcxl1uysM5u3yytImD9YmDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcRJdbD7C4P78WfI33j6/L/eWbGzaORZs4vMqQlQwYxzpZHL3oYImM9syxSRlFrn5247yYIgcz0goZZHMUKWOv2jxfM0gcLGGEOGrepjWn+pT2cVQ+g8qznaJ9HCyndxz1b836E87oHQeLEgdR4zi6bOwucx5qHAdLEweROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEHUOI4uv5mgy5yH2sRxt9v99ycvz8+bTPJZh3Mevpaa2sTB+nrHcfPwtPUIH6g/4YxOcXTZxvMavYpOcRxV+dasPNsp2scxVf06UHOqT2kWx9GdXPNry9GpGn2mTO3imML7W22BH52nVxlTxziSm4enCpv8/vG1WqlfdnF1e731DF8x81Hy9/fPNSd5byaLdmtj6hvH9NGjxsqJzG+LjmVMreOYTngUvdvtFv1dOPePr6fMsNwAi+odx1T1q8pe3zKmAR5IK7/7lWc7RfvNsVdqhXTP4k37zbFX5zzqTPJN42yO9zbZIsM0sTdmHHsrVDJeE3uDx8F3jPPMwdmJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImD6B9YhrptTjKkYQAAAABJRU5ErkJggg==">
-<title>Inventari i pijeve – peshorja</title>
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e5a49">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peshorja">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<style id="lock">#newbtn,#newform,#wsave,#wdel,#mybtn,#mylist{display:none!important}</style>
+<title>Peshorja e barit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-:root{--bg:#EEF1EC;--card:#fff;--ink:#16241E;--mute:#5B6A62;--line:#D0D8D0;--acc:#8A5209;--accbg:#F6E7CC;--liq:#C98A22;--ok:#1F6B45}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1612;--card:#17211B;--ink:#E7EEE8;--mute:#9AAAA0;--line:#2A3930;--acc:#E3AA4F;--accbg:#352810;--liq:#D9A441;--ok:#6FCF9B}}
-:root[data-theme="dark"]{--bg:#0F1612;--card:#17211B;--ink:#E7EEE8;--mute:#9AAAA0;--line:#2A3930;--acc:#E3AA4F;--accbg:#352810;--liq:#D9A441;--ok:#6FCF9B}
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}*,*::before,*::after{box-sizing:inherit}
-html,body{margin:0}html{-webkit-text-size-adjust:100%}button,summary{touch-action:manipulation}body{background:var(--bg);color:var(--ink);font:16px/1.45 "Archivo","Segoe UI",system-ui,sans-serif}
-main{max-width:560px;margin:0 auto;padding:16px}
-h1{font-size:1.5rem;margin:4px 0 14px;letter-spacing:-.01em}h2{font-size:1rem;margin:0 0 10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
-label{display:block;font-size:.85rem;color:var(--mute);margin:10px 0 4px}
-input,select,button{font:inherit;color:inherit}
-input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
-input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.row{display:flex;gap:8px}.row>*{flex:1}.row>.u{flex:0 0 96px}
-.bars{display:flex;gap:6px}.bars button{flex:1;padding:10px 0;border:1px solid var(--line);background:var(--card);border-radius:10px;cursor:pointer}
-.bars button[aria-pressed=true]{background:var(--acc);color:var(--card);border-color:var(--acc);font-weight:700}
-.res{display:flex;gap:16px;align-items:center}
-.bottle{position:relative;width:64px;height:150px;border:3px solid var(--ink);border-radius:26px 26px 12px 12px;margin-top:18px;overflow:hidden;flex:none;background:var(--bg)}
-.bottle::before{content:"";position:absolute;top:0;left:50%;width:0}
-.fill{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--liq);transition:height .35s}
-.neck{width:26px;height:18px;border:3px solid var(--ink);border-bottom:0;border-radius:6px 6px 0 0;margin:0 0 -3px 19px}
-.bw{flex:none}.big{font-size:3rem;font-weight:800;line-height:1;letter-spacing:-.03em}.big small{font-size:1.1rem;font-weight:600;margin-left:4px}
-.facts{color:var(--mute);font-size:.85rem;margin-top:8px}.msg{color:var(--acc);font-size:.9rem;margin-top:8px;min-height:1.3em}
-.btn{width:100%;padding:13px;margin-top:12px;border:0;border-radius:10px;background:var(--acc);color:var(--card);font-weight:700;cursor:pointer}
-.btn:disabled{opacity:.4;cursor:default}.btn.s{background:none;border:1px solid var(--line);color:var(--ink);width:auto;padding:8px 12px;margin:0;font-weight:500}
-details summary{cursor:pointer;color:var(--acc);font-weight:600}
-.li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--line)}
-.li b{font-variant-numeric:tabular-nums}.li button{border:0;background:none;color:var(--mute);font-size:1.2rem;cursor:pointer;padding:4px 8px}
-.tot{display:flex;justify-content:space-between;font-weight:700;padding:8px 10px;background:var(--accbg);border-radius:8px;margin-top:10px}
-.empty{color:var(--mute)}.acts{display:flex;gap:8px;margin-top:12px}
-.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px}
-.tabs button{flex:none;padding:9px 12px;border:1px solid var(--line);background:var(--card);border-radius:10px;cursor:pointer}
-.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
-table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{padding:7px 6px;border-top:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
-th{color:var(--mute);font-weight:600;border-top:0}th:first-child,td:first-child{text-align:left}tfoot td{font-weight:700;background:var(--accbg)}
+/* Layout: one narrow column, like an instrument panel: search, scale display, result gauge, ledger. */
+:root{
+--bg:#e8eeea;--surface:#f8fbf9;--ink:#12201c;--mute:#53645d;--line:#c9d6cf;
+--accent:#0e5a49;--onaccent:#f3fbf7;--liq:#d98a14;--liq2:#f3bd52;--err:#a32d2d;
+--lcd:#0f1f1b;--lcdfg:#9df5d6;--lcdmute:#5f9c88;--tint:#dcebe4;
+--f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+--f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--f-data:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0a110f;--surface:#121d19;--ink:#e8f1ed;--mute:#93a99f;--line:#243630;
+--accent:#52cfae;--onaccent:#05211a;--liq:#f0a62b;--liq2:#ffd27a;--err:#f09595;
+--lcd:#050a09;--lcdfg:#9df5d6;--lcdmute:#5f9c88;--tint:#17261f;color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0a110f;--surface:#121d19;--ink:#e8f1ed;--mute:#93a99f;--line:#243630;
+--accent:#52cfae;--onaccent:#05211a;--liq:#f0a62b;--liq2:#ffd27a;--err:#f09595;
+--lcd:#050a09;--lcdfg:#9df5d6;--lcdmute:#5f9c88;--tint:#17261f;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 var(--f-body);padding-block:8px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;align-items:center;gap:14px;padding:10px 2px 4px}
+.mark{flex:none;width:52px;height:52px;border-radius:16px;background:var(--accent);display:grid;place-items:center}
+.mark svg{width:30px;height:30px}
+h1{font:700 28px/1.1 var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+header p{margin:2px 0 0;font-size:14px;color:var(--mute)}
+h2{font:600 18px/1.2 var(--f-display);margin:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+label,.lbl{display:block;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+input,select{width:100%;margin-top:6px;padding:11px 12px;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;min-height:50px;text-transform:none;letter-spacing:0}
+select{appearance:auto}
+input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{position:relative}
+.search input{padding-left:42px;font-size:18px;background:var(--surface);border-width:2px;border-color:var(--accent)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--accent);pointer-events:none}
+#sr{margin-top:8px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.hit{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;min-height:50px;padding:10px 14px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.hit:last-child{border-bottom:0}
+.hit span{font-weight:600}
+.hit small{font-size:13px;color:var(--mute);white-space:nowrap}
+.hit:hover,.hit:focus-visible{background:var(--tint)}
+.none{margin:0;padding:14px;color:var(--mute);font-size:15px}
+.dose{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;margin-top:6px;padding:0 14px;border-radius:12px;background:var(--tint);border:1px solid var(--line)}
+.dose b{font:500 20px var(--f-data)}
+.dose span{font-size:13px;color:var(--mute)}
+.lcd{margin-top:6px;border-radius:18px;background:var(--lcd);padding:14px 18px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:inset 0 2px 10px rgba(0,0,0,.45)}
+.lcd .cap{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--lcdmute)}
+.lcd .in{display:flex;align-items:baseline;gap:8px}
+.lcd input{margin:0;min-height:0;border:0;background:transparent;color:var(--lcdfg);font:500 44px/1.15 var(--f-data);padding:0;text-align:right;border-radius:0;letter-spacing:.02em}
+.lcd input::placeholder{color:var(--lcdmute);opacity:.55}
+.lcd input:focus{outline:none}
+.lcd:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.lcd .u{font:500 22px var(--f-data);color:var(--lcdmute)}
+details{margin-top:2px}
+summary{font-size:15px;color:var(--mute);cursor:pointer;min-height:36px;display:flex;align-items:center}
+.err{color:var(--err);font-size:15px;min-height:20px;margin:0;font-weight:500}
+.err:empty{display:none}
+.res{display:flex;gap:20px;align-items:center}
+.gauge{position:relative;flex:none;width:86px;height:206px}
+.gauge .neck{position:absolute;left:31px;top:0;width:24px;height:50px;border:2px solid var(--ink);border-bottom:0;border-radius:7px 7px 0 0;background:var(--bg)}
+.gauge .body{position:absolute;left:0;right:0;top:38px;bottom:0;border:2px solid var(--ink);border-radius:30px 30px 14px 14px;overflow:hidden;background:var(--bg)}
+#fill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,var(--liq2),var(--liq));transition:height .35s ease}
+#fill:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--liq2);opacity:.9}
+.gauge .tk{position:absolute;right:0;width:14px;height:2px;background:var(--ink);opacity:.45}
+.stats{flex:1;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 14px}
+.stat small{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.stat b{font:500 28px/1.15 var(--f-data);font-variant-numeric:tabular-nums}
+.stat.hero{grid-column:1/-1}
+.stat.hero b{font-size:46px;color:var(--accent)}
+.raw{font:400 14px var(--f-data);color:var(--mute);font-style:normal;margin-left:10px}
+.stat.hero i{font:400 18px var(--f-data);color:var(--mute);font-style:normal;margin-left:4px}
+.note{font-size:14px;color:var(--mute);margin:14px 0 0}
+button{font:inherit;min-height:50px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+button.pri{background:var(--accent);color:var(--onaccent);border-color:var(--accent);width:100%;margin-top:14px;font-weight:600;font-size:17px}
+button.pri:active{transform:translateY(1px)}
+.card>.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .n{flex:1;min-width:0}
+.row .nm{font-weight:600}
+.row .n small{display:block;font:400 14px var(--f-data);color:var(--mute)}
+.bar{height:5px;border-radius:3px;background:var(--tint);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--liq);border-radius:3px}
+.row button{min-height:42px;padding:0 14px}
+.tot{display:flex;justify-content:space-between;gap:12px;font-weight:600;padding-top:14px;border-top:2px solid var(--ink);margin-top:2px}
+.tot span:last-child{font-family:var(--f-data);font-weight:500}
+.empty{color:var(--mute);font-size:15px;margin:0}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.acts button{flex:1 1 150px}
+.savebox{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.sv{display:flex;gap:10px;align-items:stretch}
+.sv input{flex:1;min-width:0;margin-top:6px}
+.sv button{flex:none;margin-top:6px}
+.msg{font-size:14px;font-weight:500;color:var(--accent);min-height:20px;margin:12px 0 0}
+.msg:empty{display:none}
+#cp{width:100%;min-height:130px;margin-top:10px;padding:10px;font:14px/1.4 var(--f-data);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px}
+.row.sr{flex-wrap:wrap}
+.btns{display:flex;gap:8px;flex-wrap:wrap;width:100%}
+.btns button{flex:1 1 70px;min-height:42px;padding:0 10px;font-size:15px}
+.hint{font-size:14px;color:var(--mute);margin:0 0 6px}
 [hidden]{display:none!important}
-.lock{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:24px;padding-top:calc(24px + env(safe-area-inset-top,0px));padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:9}
-.lock .card{width:100%;max-width:360px;margin:0}.err{color:var(--acc);min-height:1.3em;font-size:.9rem;margin-top:8px}
-.acts{flex-wrap:wrap}
-.sl{max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:6px;background:var(--card)}
-.sl button{display:block;width:100%;text-align:left;padding:12px;border:0;border-bottom:1px solid var(--line);background:none;cursor:pointer;font-size:1rem}
-.sl small{color:var(--mute);margin-left:4px}
-.sl{max-height:360px}.sl small{display:block;margin:2px 0 0;font-size:.78rem}
-.gh{position:sticky;top:0;background:var(--accbg);color:var(--acc);font-weight:700;padding:6px 12px;font-size:.8rem;z-index:1}
-</style></head><body><div class="lock" id="lock"><div class="card"><h2>Inventari i pijeve</h2>
-<label for="lp">Fjalëkalimi</label><input id="lp" type="password" autocomplete="current-password" placeholder="Shkruaj fjalëkalimin">
-<div class="err" id="le"></div><button class="btn" id="lb">Hap</button></div></div>
-<main id="app" hidden>
-<div style="display:flex;justify-content:space-between;align-items:center"><h1>Inventari me peshore</h1><button class="btn s" id="out">Kyç</button></div>
-<nav class="tabs" id="tabs"></nav>
-<div id="p-num">
-<div class="card"><h2>Në cilin bar po numëron?</h2><div class="bars" id="bars"></div>
-<label for="cat">Kategoria</label><select id="cat"><option value="">Të gjitha (krejt pijet)</option></select><label for="q">Pija</label><input id="q" placeholder="Shkruaj emrin, p.sh. J & B" autocomplete="off"><div class="sl" id="sl" hidden></div>
-<label for="w">Pesha e shishes së hapur në peshore (kg)</label>
-<input id="w" inputmode="decimal" placeholder="p.sh. 1.100">
-<details style="margin-top:12px"><summary>Kam peshat reale të kësaj shishe</summary>
-<label for="ce">Shishe bosh (kg)</label><input id="ce" inputmode="decimal"><label for="cf">Shishe e plotë e mbyllur (kg)</label><input id="cf" inputmode="decimal">
-<div class="facts">Ruhen për këtë pije dhe zëvendësojnë vlerësimin.</div></details></div>
-<div class="card"><div class="res"><div class="bw"><div class="neck"></div><div class="bottle"><div class="fill" id="fill"></div></div></div>
-<div><div class="big" id="L">–<small>L</small></div><div id="pct" class="facts"></div><div id="dose" class="facts"></div></div></div>
-<div class="facts" id="facts">Zgjidh pijen dhe shkruaj peshën.</div><div class="msg" id="msg"></div>
-<button class="btn" id="add" disabled>Shto në inventar</button><div class="facts" id="ok"></div></div>
-<div class="card"><details><summary>Ndrysho fjalëkalimin</summary>
-<label for="pw0">Fjalëkalimi aktual</label><input id="pw0" type="password" autocomplete="current-password">
-<label for="pw1">Fjalëkalimi i ri (të paktën 6 shkronja)</label><input id="pw1" type="password" autocomplete="new-password">
-<label for="pw2">Përsërite fjalëkalimin e ri</label><input id="pw2" type="password" autocomplete="new-password">
-<div class="err" id="pwm"></div><button class="btn" id="pwb">Ruaj fjalëkalimin e ri</button>
-<div class="facts">Ndryshimi vlen vetëm në këtë telefon ose shfletues.</div></details></div>
+@media (prefers-reduced-motion:reduce){#fill{transition:none}}
+@media (max-width:380px){.res{gap:14px}.gauge{width:72px}.stat.hero b{font-size:38px}.lcd input{font-size:38px}}
+.tabs{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;background:var(--bg);border:1px solid var(--line);border-radius:16px}
+.tabs button{margin:0;padding:12px 8px;border-radius:11px;border:0;background:transparent;color:var(--ink);font:600 16px inherit;font-family:inherit}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--onaccent)}
+.tabs b{display:inline-block;min-width:22px;padding:1px 6px;margin-left:6px;border-radius:99px;background:var(--liq2);color:#12201c;font-size:14px}
+.det{margin:2px 0 12px;padding:10px 12px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}.di{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:15px;border-bottom:1px solid var(--line)}.di:last-child{border:0}.di b{white-space:nowrap}.tt{font-weight:700}
+.tgt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:var(--liq2);color:#12201c;font-weight:600}.tgt button{margin:0;width:auto;padding:8px 14px;background:#12201c;color:#f3fbf7;border:0;border-radius:10px}
+.lnk{width:100%;margin-top:10px;background:var(--tint);border-style:dashed;color:var(--accent);font-weight:600}
+#newform{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--bg);display:flex;flex-direction:column;gap:12px}
+#newform h3{margin:0;font:600 18px var(--f-head,inherit)}
+#newform .btns2{display:flex;gap:10px}#newform .btns2 button{flex:1}
+.mini{width:100%;margin-top:10px}
+</style>
+
+<main>
+<header>
+<div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M13 3h6v6l3 4v14a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V13l3-4V3z" stroke="#f3fbf7" stroke-width="2" stroke-linejoin="round"/><path d="M10 19h12v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8z" fill="#f3bd52"/></svg></div>
+<div><h1>Peshorja e barit</h1><p>Peshoje shishen dhe shiko sa ka mbetur.</p></div>
+</header>
+<div class="tabs" role="tablist"><button type="button" id="tab1" role="tab" aria-selected="true">Peshorja</button><button type="button" id="tab2" role="tab" aria-selected="false">Të ruajturat<b id="cnt">0</b></button></div>
+<div class="tgt" id="tgt" hidden><span id="tgtn"></span><button type="button" id="tgtx">Mbaro</button></div>
+
+<section class="card stack vm" aria-label="Zgjidhja e pijes">
+<div>
+<label for="q">Kërko pijen</label>
+<div class="search" style="margin-top:6px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+<input id="q" type="search" placeholder="p.sh. Absolut, Jack, Martini" autocomplete="off" autocapitalize="off" spellcheck="false" style="margin-top:0">
 </div>
-<div id="p-bar" hidden><div class="card"><h2 id="bt"></h2><div id="inv"></div>
-<div class="acts"><button class="btn s" id="cp">Kopjo si tekst</button><button class="btn s xl" id="xb" hidden>Eksporto në Excel</button><button class="btn s" id="clr">Fshi këtë bar</button></div></div></div>
-<div id="p-tot" hidden><div class="card"><h2>Totali i të gjitha bar-eve</h2><div style="overflow-x:auto"><table id="tt"></table></div>
-<div class="acts"><button class="btn s" id="cpt">Kopjo tabelën</button><button class="btn s xl" id="xt" hidden>Eksporto në Excel</button><button class="btn s" id="clra">Fshi gjithçka</button></div></div></div>
-</main><script>
-const D=[["N147","AMARO LUCANO 0.7L",0.7,28,250,0,0,0,"Amaro/Bitter",0],["R0120","APEROL",1,11,250,0,0,0,"Amaro/Bitter",0],["N145","AVERNA AMARO 0.7L",0.7,29,250,0,0,0,"Amaro/Bitter",0],["N146","AVERNA AMARO 1L",1,29,250,0,0,0,"Amaro/Bitter",0],["R0027-07","CAMPARI 0.7L",0.7,25,190,0,0,0,"Amaro/Bitter",0.426],["R0027","CAMPARI 1L",1,25,190,0,0,0,"Amaro/Bitter",0.646],["R0085","FERNET",0.7,39,60,0,0,0,"Amaro/Bitter",0.533],["1915","Montengro Amaro 0.70l",0.7,23,250,0,0.65,1.35,"Amaro/Bitter",0],["8154","Old Fashion Bitter",0.2,44.7,50,0,0,0,"Amaro/Bitter",0],["8155","ORANGE BITTERS",0.35,28,50,0,0.22,0.55,"Amaro/Bitter",0],["R0030","RAMAZZOTI AMARO",1,30,250,0,0,0,"Amaro/Bitter",0],["8153","VECHIO AMARO DEL CAPO",0.7,35,250,0.05,0,0,"Amaro/Bitter",0],["R0046","OUZO",0.7,40,20,0,0,0,"Anis",0.398],["R0045","PERNOD",1,40,30,0,0,0,"Anis",0],["R0044","RICARD",1,45,30,0,0,0,"Anis",0],["R0731","YENI RAKI",0.7,45,0,0,0,0,"Anis",0],["N124","ASBACH URALT 0.7L",0.7,38,20,0,0,0,"Brandy/Konjak",0.536],["N113","CAMUS VS 0.7L",0.7,40,10,0.03,0,0,"Brandy/Konjak",0],["N114","CAMUS VSOP 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0],["R0084","COURVAIZIE VS",0.7,40,10,0.05,0,0,"Brandy/Konjak",0],["N106","COURVOISIER VSOP 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0.508],["N107","COURVOISIER XO 0.7L",0.7,40,10,0.3,0,0,"Brandy/Konjak",0.564],["N118","DELAMAIN PALE & DRY XO 0.7L",0.7,40,10,0.2,0,0,"Brandy/Konjak",0],["N099","HENNESSY VS 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0.51],["N100","HENNESSY VSOP 0.7L",0.7,40,10,0.1,0,0,"Brandy/Konjak",0.52],["N101","HENNESSY XO 0.7L",0.7,40,10,0.3,0,0,"Brandy/Konjak",0],["R0090","HENNESY LIT.",0.5,40,10,0.05,0,1.176,"Brandy/Konjak",0],["N117","HINE RARE VSOP 0.7L",0.7,40,10,0.1,0,0,"Brandy/Konjak",0],["N112","MARTELL CORDON BLEU 0.7L",0.7,40,10,0.3,0,0,"Brandy/Konjak",0],["N108","MARTELL VS 0.7L",0.7,40,10,0.03,0,0,"Brandy/Konjak",0.444],["N109","MARTELL VS 1L",1,40,10,0.03,0,0,"Brandy/Konjak",0.556],["N110","MARTELL VSOP 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0.459],["N111","MARTELL XO 0.7L",0.7,40,10,0.3,0,0,"Brandy/Konjak",0.73],["R0039","METAXA",0.7,38,20,0,0,0,"Brandy/Konjak",0],["N123","METAXA 12 STARS 0.7L",0.7,40,20,0.1,0,0,"Brandy/Konjak",0],["N119","METAXA 5 STARS 0.7L",0.7,38,20,0,0,0,"Brandy/Konjak",0],["N120","METAXA 5 STARS 1L",1,38,20,0,0,0,"Brandy/Konjak",0],["N121","METAXA 7 STARS 0.7L",0.7,40,20,0,0,0,"Brandy/Konjak",0],["N122","METAXA 7 STARS 1L",1,40,20,0,0,0,"Brandy/Konjak",0],["N115","OTARD VS 0.7L",0.7,40,10,0.03,0,0,"Brandy/Konjak",0],["N116","OTARD VSOP 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0],["N126","PERE MAGLOIRE FINE CALVADOS 0.7L",0.7,40,10,0,0,0,"Brandy/Konjak",0],["N105","REMY MARTIN 1738 0.7L",0.7,40,10,0.1,0,0,"Brandy/Konjak",0],["N102","REMY MARTIN VSOP 0.7L",0.7,40,10,0.05,0,0,"Brandy/Konjak",0.533],["N103","REMY MARTIN VSOP 1L",1,40,10,0.05,0,0,"Brandy/Konjak",0],["N104","REMY MARTIN XO 0.7L",0.7,40,10,0.35,0,0,"Brandy/Konjak",0.531],["R0005","STOCK",0.7,38,20,0,0,0,"Brandy/Konjak",0],["N125","TORRES 10 0.7L",0.7,38,20,0,0,0,"Brandy/Konjak",0],["0350","Vechia Romana",0.7,40,10,0,0,0,"Brandy/Konjak",0],["R0024","VICHIA BRANDY",0.7,36,10,0,0,0,"Brandy/Konjak",0],["1807","GIN BOMBAY",1.0,40,0,0,0,1.733,"Gin",0],["7281","GIN DUKAGIN",0.7,40,0,0,0,0,"Gin",0],["7752","GIN FIRE&ICE",0.7,40,0,0,0,0,"Gin",0],["R0013-07","GIN GORDONS 0.7L",0.7,37.5,0,0,0,0,"Gin",0.429],["R0013","GIN GORDONS 1L",1,37.5,0,0,0,1.483,"Gin",0],["7242","GIN HENDRICK'S",0.7,41.4,0,0.1,0,0,"Gin",0],["8113","GIN MONKEY 47",0.5,47.5,0,0.1,0.42,0.89,"Gin",0],["R0048","GIN TENKERY",0.7,43.1,0,0,0.57,1.25,"Gin",0],["R0096","GOLD GJIN",0.7,40,0,0,0,0,"Gin",0],["R0113","TANQERAY TEN",0.7,47.3,0,0.05,0,0,"Gin",0],["8158","Tanqueray Royale",0.7,41.3,0,0.05,0.58,1.24,"Gin",0],["1245","Tanqueray Ten",0.7,47.3,0,0.05,0.65,1.3,"Gin",0],["N163","ADVOCAAT 0.7L",0.7,14,330,0,0,0,"Liker",0],["N135","AMARULA CREAM 0.7L",0.7,17,250,0,0,0,"Liker",0],["N136","AMARULA CREAM 1L",1,17,250,0,0,0,"Liker",0],["R0118","ARCHERS",0.7,18,250,0,0,0,"Liker",0],["R0015-07","Baileys 0.7L",0.7,17,280,0,0,0,"Liker",0.594],["R0015","Baileys 1L",1,17,280,0,0,0,"Liker",0.661],["N130","BAILEYS ESPRESSO CREME 0.7L",0.7,17,280,0,0,0,"Liker",0.594],["N127","BAILEYS SALTED CARAMEL 0.7L",0.7,17,280,0,0,0,"Liker",0.594],["N128","BAILEYS SALTED CARAMEL 1L",1,17,280,0,0,0,"Liker",0.661],["N129","BAILEYS STRAWBERRIES & CREAM 0.7L",0.7,17,280,0,0,0,"Liker",0.594],["N141","BECHEROVKA 0.7L",0.7,38,100,0,0,0,"Liker",0],["N140","CHAMBORD 0.5L",0.5,16.5,280,0.1,0,0,"Liker",0],["R0076","COINTREAO",0.7,40,250,0,0,1.36,"Liker",0],["7282","DASHNI ME BRINA LIQUER",0.7,20,250,0,0,0,"Liker",0],["N155","DE KOYPER AMARETTO 0.7L",0.7,18,300,0,0,0,"Liker",0],["R0078","DE KOYPER APRICOT BRANDY",0.7,20,300,0,0,0,"Liker",0],["R0079","DE KOYPER BLUE CORACAO",0.7,21,300,0,0,0,"Liker",0],["R0077","DE KOYPER CHERY BRANDY",0.7,15,300,0,0,0,"Liker",0],["N152","DE KOYPER CREME DE CASSIS 0.7L",0.7,15,400,0,0,0,"Liker",0],["N151","DE KOYPER CREME DE MENTHE 0.7L",0.7,24,300,0,0,0,"Liker",0],["R0080","DE KOYPER CRÈME DE BANANES",0.7,17,300,0,0,0,"Liker",0],["N153","DE KOYPER MELON 0.7L",0.7,17,300,0,0,0,"Liker",0],["N150","DE KOYPER PEACH TREE 0.7L",0.7,18,300,0,0,0,"Liker",0],["N156","DE KOYPER SOUR APPLE 0.7L",0.7,15,300,0,0,0,"Liker",0],["N154","DE KOYPER STRAWBERRY 0.7L",0.7,15,300,0,0,0,"Liker",0],["R0081","DE KOYPER TRIPLE SEC",0.7,24,300,0,0,0,"Liker",0],["N157","DISARONNO VELVET 0.7L",0.7,17,300,0,0,0,"Liker",0.73],["R0070","DISARONO",0.7,28,350,0,0,1.47,"Liker",0],["R0036","DRAMBUIE",0.7,40,300,0,0,0,"Liker",0.579],["N132","FRANGELICO 0.7L",0.7,20,280,0.1,0,0,"Liker",0.49],["N138","GALLIANO VANILLA 0.7L",0.7,30,250,0.1,0,0,"Liker",0.819],["N133","GRAND MARNIER CORDON ROUGE 0.7L",0.7,40,250,0.03,0,0,"Liker",0.607],["N134","GRAND MARNIER CORDON ROUGE 1L",1,40,250,0.03,0,0,"Liker",0.876],["R0009-07","JEGEMAYSTER 0.7L",0.7,35,200,0,0,0,"Liker",0.569],["R0009","JEGEMAYSTER 1L",1,35,200,0,0.76,1.77,"Liker",0],["R0066","KAHLUA",0.7,16,400,0,0,0,"Liker",0.546],["R0069","KEGLEVICH DELICIOUS",0.7,18,200,0,0,0,"Liker",0],["N159","KEGLEVICH LEMON 0.7L",0.7,18,200,0,0,0,"Liker",0],["N158","KEGLEVICH PEACH 0.7L",0.7,18,200,0,0,0,"Liker",0],["R0063","LIKER BADEL LAVOV",0.7,20,250,0,0,0,"Liker",0],["R0065","LIKER DE MANDARINE",0.7,38,250,0,0,0,"Liker",0],["R0064","LIKER I VANILES",0.7,20,250,0,0,0,"Liker",0],["R0123","LIKER LAJTHIE",0.7,20,250,0,0,0,"Liker",0],["8190","Liker Pasion",0.7,18,250,0,0,0,"Liker",0],["8117","Liker Shege",0.7,20,250,0,0,0,"Liker",0],["8151","LIKER THANE",0.7,20,250,0,0,0,"Liker",0],["8118","Liker Vishnje",0.7,20,250,0,0,0,"Liker",0],["R0071","LIMONQELLO",0.7,28,300,0,0,0,"Liker",0],["R0016","MALIBU",1,21,250,0,0,0,"Liker",0.646],["N137","MIDORI 0.7L",0.7,20,280,0,0,0,"Liker",0.607],["N148","PASSOA 0.7L",0.7,17,280,0,0,0,"Liker",0],["N144","PELINKOVAC 0.7L",0.7,31,200,0,0,0,"Liker",0],["N149","PISANG AMBON 0.7L",0.7,17,250,0,0,0,"Liker",0],["N161","SAMBUCA MOLINARI 0.7L",0.7,42,350,0,0,0,"Liker",0],["N162","SAMBUCA MOLINARI 1L",1,42,350,0,0,0,"Liker",0],["R0026","SAMBUKA",0.7,38,300,0,0,0,"Liker",0],["R0114","SHERIDIAN`S DOBLE CREM LIQUEUR",0.5,15.5,300,0.1,0,0,"Liker",0],["R0029","SHERRY BRANDY",0.7,30,150,0,0,0,"Liker",0],["R0068","SOUTHERN COMFORT",1,35,150,0,0,0,"Liker",0.584],["N139","STREGA 0.7L",0.7,40,220,0,0,0,"Liker",0],["N160","TEQUILA ROSE 0.7L",0.7,15,250,0,0,0,"Liker",0],["N131","TIA MARIA 0.7L",0.7,20,300,0,0,0,"Liker",0.663],["N142","UNICUM 0.7L",0.7,40,100,0,0,0,"Liker",0],["N143","UNICUM 1L",1,40,100,0,0,0,"Liker",0],["R0137","Lozova Zolta 1lit",1,40,0,0,0,0,"Raki",0],["R0003","PRIVIENAC",0.7,40,0,0,0,0,"Raki",0],["7618","RAKI ARRE",0.7,40,0,0,0,0,"Raki",0],["R0091","RAKI FTONI",0.7,40,0,0,0,0,"Raki",0],["R0092","RAKI KAJSIS",0.7,40,0,0,0,0,"Raki",0],["R0004","Raki KRUNA",0.7,40,0,0,0,0,"Raki",0],["R0002","Raki KUMBULLE",0.7,40,0,0,0,0,"Raki",0],["1848","RAKI MJALTE",0.7,40,100,0,0,0,"Raki",0],["R0127","RAKI MOLLE",0.7,40,0,0,0,0,"Raki",0],["0385","Raki Rushi",0.7,42,0,0,0,0,"Raki",0],["1689","Raki Rushi rahoveci 42%alc",0.7,42,0,0,0,0,"Raki",0],["R0007","Raki SKENDERBEG",0.7,40,0,0,0,0,"Raki",0],["R0008","VILIAMOVKA",1.0,40,0,0,0,1.607,"Raki",0],["R0944","BACARDY",1,37.5,0,0,0,0,"Rum",0.524],["R0141","BACARDY BLACK",1,37.5,20,0,0,0,"Rum",0.51],["R0116","CAPTAIN MORGAN GOLD",0.7,35,30,0,0,1.083,"Rum",0],["R0115","CAPTAN MORGAN BLACK",0.7,40,0,0,0,1.083,"Rum",0],["R0054","RUM BADEL LAVOV",0.7,37.5,0,0,0,0,"Rum",0],["R0056","RUM HAVANA CLUB",0.7,37.5,0,0,0,0,"Rum",0],["R0055","RUM JAMAICA",0.7,40,0,0,0,0,"Rum",0],["0338","Syrup Eoliki",0.7,0,750,0,0,0,"Shurup",0],["R0059","SYRUP GRENANDINE",0.7,0,750,0,0,0,"Shurup",0],["R0058","SYRUP MANDAROLA",0.7,0,750,0,0,0,"Shurup",0],["R0060","SYRUP MONIN TRIPLE SEC",0.7,0,750,0,0,0,"Shurup",0],["R0047","TWO FINGERS TECILA",0.7,38,0,0,0,0,"Tekila",0.459],["2190","ARDBEG SCOTCH WHISKY",0.7,46,0,0.05,0,0,"Uiski",0],["N032","BALLANTINE'S 12 0.7L",0.7,40,0,0.03,0,0,"Uiski",0],["N030","BALLANTINE'S FINEST 0.7L",0.7,40,0,0,0,0,"Uiski",0.52],["N031","BALLANTINE'S FINEST 1L",1,40,0,0,0,0,"Uiski",0.706],["N045","BUSHMILLS ORIGINAL 0.7L",0.7,40,0,0,0,0,"Uiski",0.498],["N046","BUSHMILLS ORIGINAL 1L",1,40,0,0,0,0,"Uiski",0.663],["N054","CANADIAN CLUB 0.7L",0.7,40,0,0,0,0,"Uiski",0.431],["N055","CANADIAN CLUB 1L",1,40,0,0,0,0,"Uiski",0.567],["R0053","CANADIAN SPECIAL OLD",0.7,40,0,0,0,0,"Uiski",0],["N027","CHIVAS REGAL 12 0.7L",0.7,40,0,0.03,0,0,"Uiski",0.449],["N028","CHIVAS REGAL 12 1L",1,40,0,0.03,0,0,"Uiski",0.595],["N029","CHIVAS REGAL 18 0.7L",0.7,40,0,0.15,0,0,"Uiski",0],["R0104","CROWN ROYAL",0.75,40,0,0.05,0,0,"Uiski",0.51],["N033","CUTTY SARK 0.7L",0.7,40,0,0,0,0,"Uiski",0.472],["N034","CUTTY SARK 1L",1,40,0,0,0,0,"Uiski",0.635],["R0051","DIMPLE",0.7,40,0,0.1,0,0,"Uiski",0],["N052","FOUR ROSES 0.7L",0.7,40,0,0,0,0,"Uiski",0.401],["N053","FOUR ROSES 1L",1,40,0,0,0,0,"Uiski",0.51],["N037","GLENFIDDICH 12 0.7L",0.7,40,0,0.05,0,0,"Uiski",0.546],["N038","GLENFIDDICH 12 1L",1,40,0,0.05,0,0,"Uiski",0.706],["N039","GLENFIDDICH 15 0.7L",0.7,40,0,0.05,0,0,"Uiski",0.477],["N035","GRANT'S TRIPLE WOOD 0.7L",0.7,40,0,0,0,0,"Uiski",0.51],["N036","GRANT'S TRIPLE WOOD 1L",1,40,0,0,0,0,"Uiski",0.663],["R0052","HAIG WISKY",0.7,40,0,0,0,0,"Uiski",0],["R0025-07","J & B 0.7L",0.7,40,0,0,0,0,"Uiski",0.464],["R0025","J & B 1L",1,40,0,0,0,1.563,"Uiski",0],["N003","JACK DANIEL'S GENTLEMAN JACK 0.7L",0.7,40,0,0,0,0,"Uiski",0],["N004","JACK DANIEL'S GENTLEMAN JACK 1L",1,40,0,0,0,0,"Uiski",0.689],["N001","JACK DANIEL'S OLD No.7 0.7L",0.7,40,0,0,0,0,"Uiski",0.431],["N002","JACK DANIEL'S OLD No.7 1L",1,40,0,0,0,0,"Uiski",0.527],["N005","JACK DANIEL'S SINGLE BARREL 0.7L",0.7,45,0,0.05,0,0,"Uiski",0.577],["N010","JACK DANIEL'S TENNESSEE APPLE 0.7L",0.7,35,80,0,0,0,"Uiski",0],["N008","JACK DANIEL'S TENNESSEE FIRE 0.7L",0.7,35,80,0,0,0,"Uiski",0],["N009","JACK DANIEL'S TENNESSEE FIRE 1L",1,35,80,0,0,0,"Uiski",0],["N006","JACK DANIEL'S TENNESSEE HONEY 0.7L",0.7,35,80,0,0,0,"Uiski",0],["N007","JACK DANIEL'S TENNESSEE HONEY 1L",1,35,80,0,0,0,"Uiski",0.595],["N011","JACK DANIEL'S TENNESSEE RYE 0.7L",0.7,45,0,0,0,0,"Uiski",0],["N049","JAMESON BLACK BARREL 0.7L",0.7,40,0,0,0,0,"Uiski",0],["R0050-07","JEMSON 0.7L",0.7,40,0,0,0,0,"Uiski",0.477],["R0050","JEMSON 1L",1,40,0,0,0,0,"Uiski",0.604],["N024","JIM BEAM BLACK 0.7L",0.7,43,0,0,0,0,"Uiski",0.398],["N025","JIM BEAM BLACK 1L",1,43,0,0,0,0,"Uiski",0.493],["N026","JIM BEAM HONEY 0.7L",0.7,32.5,80,0,0,0,"Uiski",0],["N022","JIM BEAM WHITE 0.7L",0.7,40,0,0,0,0,"Uiski",0.39],["N023","JIM BEAM WHITE 1L",1,40,0,0,0,0,"Uiski",0.485],["N014","JOHNNIE WALKER BLACK LABEL 0.7L",0.7,40,0,0.03,0,0,"Uiski",0.449],["N015","JOHNNIE WALKER BLACK LABEL 1L",1,40,0,0.03,0,0,"Uiski",0.703],["N021","JOHNNIE WALKER BLUE LABEL 0.7L",0.7,40,0,0.3,0,0,"Uiski",0.572],["N016","JOHNNIE WALKER DOUBLE BLACK 0.7L",0.7,40,0,0.03,0,0,"Uiski",0.449],["N017","JOHNNIE WALKER DOUBLE BLACK 1L",1,40,0,0.03,0,0,"Uiski",0.703],["N019","JOHNNIE WALKER GOLD LABEL RESERVE 0.7L",0.7,40,0,0.1,0,0,"Uiski",0.475],["N018","JOHNNIE WALKER GREEN LABEL 0.7L",0.7,43,0,0.05,0,0,"Uiski",0],["N020","JOHNNIE WALKER PLATINUM LABEL 0.7L",0.7,40,0,0.1,0,0,"Uiski",0],["N012","JOHNNIE WALKER RED LABEL 0.7L",0.7,40,0,0,0,0,"Uiski",0.449],["N013","JOHNNIE WALKER RED LABEL 1L",1,40,0,0,0,0,"Uiski",0.689],["R0093-07","LABELS 5 0.7L",0.7,40,0,0,0,0,"Uiski",0],["R0093","LABELS 5 1L",1,40,0,0,0,0,"Uiski",0],["N044","LAGAVULIN 16 0.7L",0.7,43,0,0.05,0,0,"Uiski",0],["N043","LAPHROAIG 10 0.7L",0.7,40,0,0.03,0,0,"Uiski",0],["N050","MAKER'S MARK 0.7L",0.7,45,0,0.03,0,0,"Uiski",0.577],["N042","TALISKER 10 0.7L",0.7,45.8,0,0.05,0,0,"Uiski",0],["N040","THE GLENLIVET 12 0.7L",0.7,40,0,0,0,0,"Uiski",0.498],["N041","THE MACALLAN 12 DOUBLE CASK 0.7L",0.7,40,0,0.1,0,0,"Uiski",0.469],["N047","TULLAMORE DEW 0.7L",0.7,40,0,0,0,0,"Uiski",0.52],["N048","TULLAMORE DEW 1L",1,40,0,0,0,0,"Uiski",0.686],["R0033-07","WHITE HORSE 0.7L",0.7,40,0,0,0,0,"Uiski",0.439],["R0033","WHITE HORSE 1L",1,40,0,0,0,0,"Uiski",0.61],["N051","WILD TURKEY 101 0.7L",0.7,50.5,0,0,0,0,"Uiski",0.413],["2117","Wood Reserve Wiskey",0.7,43.2,0,0,0,0,"Uiski",0.538],["0351","Cinzano",1,15,150,0,0,0,"Vermut",0],["R0020","MARTINI BIANCO",1,15,150,0,0,0,"Vermut",0],["R0017","MARTINI DRY EXTRA",1,18,30,0,0,0,"Vermut",0],["R0019","MARTINI ROOSO",1,15,150,0,0,0,"Vermut",0],["R0018","MARTINI ROSE",1,15,150,0,0,0,"Vermut",0],["R0057","STONE CASTLE VERAK",0.75,12.5,5,0,0,0,"Verë/Shampanjë",0],["N056","ABSOLUT CITRON 0.7L",0.7,40,0,0,0,0,"Vodka",0.528],["N057","ABSOLUT CITRON 1L",1,40,0,0,0,0,"Vodka",0.743],["N070","ABSOLUT ELYX 0.7L",0.7,42.3,0,0.15,0,0,"Vodka",0],["N066","ABSOLUT KURANT 0.7L",0.7,40,0,0,0,0,"Vodka",0.518],["N067","ABSOLUT KURANT 1L",1,40,0,0,0,0,"Vodka",0.731],["N064","ABSOLUT MANDRIN 0.7L",0.7,40,0,0,0,0,"Vodka",0.523],["N065","ABSOLUT MANDRIN 1L",1,40,0,0,0,0,"Vodka",0.729],["N062","ABSOLUT PEARS 0.7L",0.7,40,0,0,0,0,"Vodka",0.536],["N063","ABSOLUT PEARS 1L",1,40,0,0,0,0,"Vodka",0.734],["N068","ABSOLUT PEPPAR 0.7L",0.7,40,0,0,0,0,"Vodka",0.533],["N069","ABSOLUT PEPPAR 1L",1,40,0,0,0,0,"Vodka",0.74],["N058","ABSOLUT RASPBERRI 0.7L",0.7,40,0,0,0,0,"Vodka",0.536],["N059","ABSOLUT RASPBERRI 1L",1,40,0,0,0,0,"Vodka",0.734],["N060","ABSOLUT VANILIA 0.7L",0.7,40,0,0,0,0,"Vodka",0.531],["N061","ABSOLUT VANILIA 1L",1,40,0,0,0,0,"Vodka",0.731],["N075","BELUGA NOBLE 0.7L",0.7,40,0,0.25,0,0,"Vodka",0],["N080","ERISTOFF 0.7L",0.7,37.5,0,0,0,0,"Vodka",0],["N081","ERISTOFF 1L",1,37.5,0,0,0,0,"Vodka",0],["N096","FINLANDIA CRANBERRY 1L",1,37.5,20,0,0,0,"Vodka",0.635],["N098","FINLANDIA GRAPEFRUIT 1L",1,37.5,20,0,0,0,"Vodka",0.621],["N097","FINLANDIA LIME 1L",1,37.5,20,0,0,0,"Vodka",0.618],["N082","GORBATSCHOW 0.7L",0.7,37.5,0,0,0,0,"Vodka",0],["N083","GORBATSCHOW 1L",1,37.5,0,0,0,0,"Vodka",0],["N092","GREEN MARK 0.7L",0.7,37.5,0,0,0,0,"Vodka",0],["N093","GREEN MARK 1L",1,37.5,0,0,0,0,"Vodka",0],["N086","KETEL ONE 0.7L",0.7,40,0,0.03,0,0,"Vodka",0.436],["N087","KETEL ONE 1L",1,40,0,0.03,0,0,"Vodka",0.59],["N094","MOSKOVSKAYA 0.7L",0.7,40,0,0,0,0,"Vodka",0],["N095","MOSKOVSKAYA 1L",1,40,0,0,0,0,"Vodka",0],["N090","NEMIROFF 0.7L",0.7,40,0,0,0,0,"Vodka",0],["N091","NEMIROFF 1L",1,40,0,0,0,0,"Vodka",0],["R0041","POLIAKOV VOTKA",0.7,37.5,0,0,0,0,"Vodka",0],["R0032","PUSHKIN BLACK",0.7,37.5,30,0,0,0,"Vodka",0],["R0031","PUSHKIN RED",0.7,37.5,30,0,0,0,"Vodka",0],["0765","PUSHKIN WHITE",0.7,37.5,0,0,0,0,"Vodka",0],["N073","RUSSIAN STANDARD ORIGINAL 0.7L",0.7,40,0,0,0,0,"Vodka",0],["N074","RUSSIAN STANDARD ORIGINAL 1L",1,40,0,0,0,0,"Vodka",0],["N084","SKYY 0.7L",0.7,40,0,0,0,0,"Vodka",0.413],["N085","SKYY 1L",1,40,0,0,0,0,"Vodka",0.593],["R0109","SMIRNOF APPLE TWIST",1,30,60,0,0,0,"Vodka",0.647],["R1015","SMIRNOF BLACK",1,40,0,0,0,0,"Vodka",0.647],["R0105","SMIRNOF BLUE",1,50,0,0,0,0,"Vodka",0.647],["R0110","SMIRNOF CITRUS TWIST",1,30,60,0,0,0,"Vodka",0.647],["R0106","SMIRNOF Double BLACK",1,40,0,0,0,0,"Vodka",0.647],["R0107","SMIRNOF NORTH",1,37.5,0,0,0,0,"Vodka",0.647],["R0112","SMIRNOF ORANGE TWIST",1,30,60,0,0,0,"Vodka",0.647],["R0111","SMIRNOF RASPBERRY TWIST",1,30,60,0,0,0,"Vodka",0.647],["R0108","SMIRNOF VANILA TWIST",1,30,60,0,0,0,"Vodka",0.647],["8129","SMIRNOF VANILLA",1,37.5,20,0,0,0,"Vodka",0.647],["N079","SOBIESKI 0.7L",0.7,40,0,0,0,0,"Vodka",0],["R0097","SPIRIT Votka",0.7,40,0,0,0,0,"Vodka",0],["N071","STOLICHNAYA 0.7L",0.7,40,0,0,0,0,"Vodka",0.431],["N072","STOLICHNAYA 1L",1,40,0,0,0,0,"Vodka",0.516],["N088","TITO'S HANDMADE 0.7L",0.7,40,0,0,0,0,"Vodka",0],["N089","TITO'S HANDMADE 1L",1,40,0,0,0,0,"Vodka",0],["7751","VODKA AU",0.7,40,0,0,0,1.39,"Vodka",0],["R0140","Vodka Belvedere",0.7,40,0,0.1,0,1.226,"Vodka",0],["R0134","Vodka Ciroc",0.7,40,0,0.15,0,1.378,"Vodka",0],["R0012-07","VODKA FINLANDIA 0.7L",0.7,40,0,0,0,0,"Vodka",0.485],["R0012","VODKA FINLANDIA 1L",1,40,0,0,0,0,"Vodka",0.621],["7753","VODKA FIRE&ICE",0.7,40,0,0,0,0,"Vodka",0],["R0139","Vodka Grey Goose",0.7,40,0,0.15,0,1.242,"Vodka",0],["R0132","Vodka Romana",0.7,37.5,0,0,0,0,"Vodka",0],["R0006-07","VODKA SMIRNOF 0.7L",0.7,37.5,0,0,0,0,"Vodka",0.566],["R0006","VODKA SMIRNOF 1L",1,37.5,0,0,0,1.598,"Vodka",0],["R0117","VODKA URSUS",0.7,40,0,0,0,0,"Vodka",0],["7283","VODKULLA VODKA",0.7,40,0,0,0,0,"Vodka",0],["R0034-07","VOTKA ABSOLUT 0.7L",0.7,40,0,0,0,0,"Vodka",0.536],["R0034","VOTKA ABSOLUT 1L",1,40,0,0,0.71,1.598,"Vodka",0],["N078","WYBOROWA 0.7L",0.7,40,0,0,0,0,"Vodka",0.434],["N076","ZUBROWKA BISON GRASS 0.7L",0.7,37.5,0,0,0,0,"Vodka",0],["N077","ZUBROWKA BISON GRASS 1L",1,37.5,0,0,0,0,"Vodka",0]];
-const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-let st={cal:{},inv:[],bar:1};
-try{Object.assign(st,JSON.parse(localStorage.getItem('rakiat-v1')||'{}'))}catch(e){}
-const save=()=>{try{localStorage.setItem('rakiat-v1',JSON.stringify(st))}catch(e){}};
-const lab=p=>p[1]+' ['+p[0]+']',num=v=>{const x=parseFloat(String(v).replace(',','.'));return isFinite(x)?x:NaN};
-function props(p){const[c,,v,a,s,x]=p,k=st.cal[c]||{e:p[6]||0,f:p[7]||0},d=.9982-.00127*a+.00039*s,e=k.e>0?k.e:k.f>0?k.f-v*d:p[9]>0?p[9]:.10+.55*v+x,f=k.f>0?k.f:e+v*d;return{e,f,v,d:(f-e)/v}}
-const cur=()=>D.find(p=>lab(p)===$('q').value);
-let last=null;
-function calc(){const p=cur(),m=$('msg');m.textContent='';last=null;$('add').disabled=true;
- const cal=p&&st.cal[p[0]]||{};$('ce').value=cal.e||'';$('cf').value=cal.f||'';
- if(p){const q=props(p);$('ce').placeholder='vlerësim '+q.e.toFixed(3);$('cf').placeholder='vlerësim '+(q.e+q.v*(.9982-.00127*p[3]+.00039*p[4])).toFixed(3)}
- const w=num($('w').value);
- if(!p||isNaN(w)){$('L').innerHTML='–<small>L</small>';$('pct').textContent='';$('dose').textContent='';$('fill').style.height='0';
-  $('facts').textContent=p?'Plot '+props(p).f.toFixed(3)+' kg · bosh '+props(p).e.toFixed(3)+' kg · '+p[2]+' L':'Zgjidh pijen dhe shkruaj peshën.';return}
- const q=props(p),kg=w,l=Math.max(0,(kg-q.e)/q.d),pc=Math.min(1,l/q.v);
- $('L').innerHTML=l.toFixed(2)+'<small>L</small>';$('pct').textContent=Math.round(pc*100)+'% e shishes';
- $('dose').textContent=(l*100/4).toFixed(1)+' doza (4 cl)';$('fill').style.height=(pc*100)+'%';
- $('facts').textContent='Plot '+q.f.toFixed(3)+' kg · bosh '+q.e.toFixed(3)+' kg · '+q.v+' L'+(st.cal[p[0]]||p[6]||p[7]?' · peshat e matura':p[9]?' · bosh sipas tabelës së referencës':' · peshat e vlerësuara');
- if(kg<q.e)m.textContent='Pesha është nën peshën e shishes bosh. Shkruaje në kg (p.sh. 1.100). Kontrollo edhe peshën bosh.';
- else if(l>q.v*1.05)m.textContent='Pesha është mbi peshën e shishes së plotë. Shkruaje në kg (p.sh. 1.100). Kontrollo edhe peshat reale.';
- last={p,l,v:q.v};$('add').disabled=false}
-function cal(){const p=cur();if(!p)return;const e=num($('ce').value),f=num($('cf').value);
- if(e>0||f>0)st.cal[p[0]]={e:e>0?e:0,f:f>0?f:0};else delete st.cal[p[0]];save();
- const w=$('w').value;calc2()}
-function calc2(){const p=cur(),ce=$('ce').value,cf=$('cf').value;calc();$('ce').value=ce;$('cf').value=cf}
-let view="num";const nm=b=>"Bari "+b,fx=n=>n.toFixed(2);
-const flash=(id,txt,back)=>{$(id).textContent=txt;setTimeout(()=>$(id).textContent=back,1500)};
-const copy=(txt,id,back)=>{try{navigator.clipboard.writeText(txt).then(()=>flash(id,"U kopjua",back),()=>prompt("Kopjo tekstin:",txt))}catch(e){prompt("Kopjo tekstin:",txt)}};
-function barSel(){[...$("bars").children].forEach(x=>x.setAttribute("aria-pressed",+x.dataset.b===st.bar))}
-function agg(){const m={};st.inv.forEach(x=>{const k=x.code||x.name;(m[k]=m[k]||{n:x.name,b:[0,0,0,0,0]}).b[x.bar-1]+=x.l});
- return Object.values(m).sort((a,b)=>a.n.localeCompare(b.n))}
+<div id="sr" hidden role="listbox" aria-label="Rezultatet e kërkimit"></div>
+<button type="button" class="lnk" id="newbtn">+ Shto pije të re</button>
+<button type="button" class="lnk" id="mybtn" style="margin-top:6px">📋 Pijet e mia (0)</button>
+<div id="mylist" hidden></div>
+<div id="newform" hidden>
+<h3>Pije e re</h3>
+<label for="nn">Emri i pijes<input id="nn" type="text" maxlength="40" placeholder="p.sh. Vodka Zubrowka" autocomplete="off"></label>
+<div class="row2">
+<label for="ng">Lloji<select id="ng"><option value="0.948">Vodka</option><option value="0.948">Uiski</option><option value="0.948">Konjak / brandy</option><option value="0.948">Rakia</option><option value="0.945">Rum</option><option value="0.945">Xhin</option><option value="0.945">Tekila</option><option value="1.05">Liker</option><option value="1.00">Aperitiv</option><option value="1.00">Tjetër</option></select></label>
+<label for="nv">Madhësia<select id="nv"></select></label>
+</div>
+<div class="row2">
+<label for="nf">Plot (g)<input id="nf" type="number" inputmode="decimal" placeholder="p.sh. 1520"></label>
+<label for="ne">Zbrazët (g)<input id="ne" type="number" inputmode="decimal" placeholder="opsionale"></label>
+</div>
+<p class="err" id="nerr" role="alert"></p>
+<div class="btns2"><button type="button" class="pri" id="nsave" style="margin-top:0">Ruaj pijen</button><button type="button" id="ncancel">Anulo</button></div>
+</div>
+</div>
+<label for="type">Ose zgjidhe nga lista
+<select id="type">
+<optgroup label="Vodka">
+<option value="0.948|40|Absolut|1000">Absolut</option>
+<option value="0.948|40|Smirnoff|1000">Smirnoff</option>
+<option value="0.948|40|Grey Goose|700">Grey Goose</option>
+<option value="0.948|40|Belvedere|700">Belvedere</option>
+<option value="0.948|40|Finlandia|1000">Finlandia</option>
+<option value="0.948|40|Stolichnaya|1000">Stolichnaya</option>
+<option value="0.948|40|Russian Standard|1000">Russian Standard</option>
+<option value="0.948|40|Vodka tjetër|700">Vodka tjetër</option>
+<option value="0.948|40|Ciroc|700">Ciroc</option>
+<option value="0.948|40|Au Vodka|700">Au Vodka</option>
+<option value="0.98|40|Pushkin Black|700">Pushkin Black</option>
+<option value="0.98|40|Pushkin Red|700">Pushkin Red</option>
+<option value="0.948|40|Ursus|700">Ursus</option>
+<option value="0.948|40|Vodka Fire&amp;Ice|1000">Vodka Fire&amp;Ice</option>
+<option value="0.98|40|Pushkin White|700">Pushkin White</option>
+</optgroup>
+<optgroup label="Uiski">
+<option value="0.948|40|Jack Daniel's|1000">Jack Daniel's</option>
+<option value="0.948|40|Johnnie Walker|700">Johnnie Walker</option>
+<option value="0.948|40|Jameson|700">Jameson</option>
+<option value="0.948|40|Chivas Regal|1000">Chivas Regal</option>
+<option value="0.948|40|Ballantine's|1000">Ballantine's</option>
+<option value="0.948|40|Jim Beam|1000">Jim Beam</option>
+<option value="0.948|40|Glenfiddich|700">Glenfiddich</option>
+<option value="0.948|40|J&B|1000">J&B</option>
+<option value="0.948|40|Uiski tjetër|700">Uiski tjetër</option>
+<option value="1.03|40|Jack Daniel's Honey|700">Jack Daniel's Honey</option>
+<option value="0.948|40|Dimple|1000">Dimple</option>
+<option value="0.948|40|Ardbeg Ten|700">Ardbeg Ten</option>
+<option value="0.948|40|Canadian Special Old|700">Canadian Special Old</option>
+<option value="0.948|40|White Horse|750">White Horse</option>
+<option value="0.948|40|Johnnie Walker Swing|750">Johnnie Walker Swing</option>
+<option value="0.948|40|Johnnie Walker Red|1000">Johnnie Walker Red</option>
+</optgroup>
+<optgroup label="Konjak dhe brandy">
+<option value="0.948|40|Hennessy|700">Hennessy</option>
+<option value="0.95|40|Verak 25|700">Verak 25</option>
+<option value="0.948|40|Rémy Martin|700">Rémy Martin</option>
+<option value="0.948|40|Courvoisier|700">Courvoisier</option>
+<option value="0.948|40|Skenderbeu|700">Skenderbeu</option>
+<option value="0.948|40|Metaxa|750">Metaxa</option>
+<option value="0.948|40|Konjak tjetër|700">Konjak tjetër</option>
+<option value="0.95|40|Badel Lavov|1000">Badel Lavov</option>
+<option value="0.95|40|Stock|1000">Stock</option>
+</optgroup>
+<optgroup label="Rakia">
+<option value="0.948|40|Rakia e rrushit|1000">Rakia e rrushit</option>
+<option value="0.948|40|Rakia e kumbullës|1000">Rakia e kumbullës</option>
+<option value="0.948|40|Rakia e mollës|1000">Rakia e mollës</option>
+<option value="0.948|40|Rakia tjetër|1000">Rakia tjetër</option>
+<option value="0.948|40|Viljamovka|1000">Viljamovka</option>
+<option value="0.948|40|Raki Rushi|750">Raki Rushi</option>
+<option value="0.948|40|Raki Arre|1000">Raki Arre</option>
+<option value="0.948|40|Raki Ftoni|1000">Raki Ftoni</option>
+<option value="0.945|40|Yeni Raki|700">Yeni Raki</option>
+</optgroup>
+<optgroup label="Rum">
+<option value="0.945|40|Bacardi|1000">Bacardi</option>
+<option value="0.945|40|Bacardi Black|1000">Bacardi Black</option>
+<option value="0.945|40|Captain Morgan Black|700">Captain Morgan Black</option>
+<option value="0.945|40|Captain Morgan Gold|700">Captain Morgan Gold</option>
+<option value="0.945|40|Havana Club|700">Havana Club</option>
+<option value="0.945|40|Rum tjetër|700">Rum tjetër</option>
+</optgroup>
+<optgroup label="Xhin">
+<option value="0.945|40|Gordon's|1000">Gordon's</option>
+<option value="0.945|40|Beefeater|1000">Beefeater</option>
+<option value="0.945|40|Tanqueray|700">Tanqueray</option>
+<option value="0.945|40|Bombay Sapphire|1000">Bombay Sapphire</option>
+<option value="0.945|40|Hendrick's|700">Hendrick's</option>
+<option value="0.945|40|Xhin tjetër|700">Xhin tjetër</option>
+<option value="0.945|40|Monkey 47|500">Monkey 47</option>
+<option value="0.945|40|Tanqueray Ten|750">Tanqueray Ten</option>
+<option value="0.945|40|Tanqueray Blackcurrant Royale|700">Tanqueray Blackcurrant Royale</option>
+</optgroup>
+<optgroup label="Tekila">
+<option value="0.948|40|Jose Cuervo|1000">Jose Cuervo</option>
+<option value="0.948|40|Olmeca|700">Olmeca</option>
+<option value="0.948|40|Sierra|1000">Sierra</option>
+<option value="0.948|40|Tekila tjetër|700">Tekila tjetër</option>
+</optgroup>
+<optgroup label="Liker">
+<option value="1.05|40|Baileys|1000">Baileys</option>
+<option value="1.08|40|Amaretto|700">Amaretto</option>
+<option value="1.07|40|Archers|700">Archers</option>
+<option value="1.08|40|Kahlúa|700">Kahlúa</option>
+<option value="1.03|40|Malibu|1000">Malibu</option>
+<option value="1.00|40|Sambuca|700">Sambuca</option>
+<option value="1.08|40|Drambuie|700">Drambuie</option>
+<option value="1.05|40|Liker Shege (shtëpie)|1000">Liker Shege (shtëpie)</option>
+<option value="1.05|40|Limoncello|700">Limoncello</option>
+<option value="1.08|40|Liker tjetër|700">Liker tjetër</option>
+<option value="1.04|40|Cointreau|700">Cointreau</option>
+<option value="1.08|40|Disaronno|700">Disaronno</option>
+<option value="1.00|40|Fernet|700">Fernet</option>
+<option value="1.05|40|Montenegro Amaro|700">Montenegro Amaro</option>
+<option value="1.05|40|Ramazzotti Amaro|700">Ramazzotti Amaro</option>
+<option value="1.25|20|Monin Triple Sec (shurup)|700">Monin Triple Sec (shurup)</option>
+<option value="1.05|40|Dashni me Brina|700">Dashni me Brina</option>
+<option value="0.95|40|Pernod|700">Pernod</option>
+<option value="1.04|40|Southern Comfort|700">Southern Comfort</option>
+</optgroup>
+<optgroup label="Aperitiv dhe të tjera">
+<option value="1.00|40|Jägermeister|1000">Jägermeister</option>
+<option value="0.95|40|Ouzo|700">Ouzo</option>
+<option value="1.05|40|Campari|1000">Campari</option>
+<option value="1.04|40|Aperol|1000">Aperol</option>
+<option value="0.99|40|Martini Rosso|1000">Martini Rosso</option>
+<option value="0.99|40|Martini Bianco|1000">Martini Bianco</option>
+<option value="1.00|40|Martini Bianco Vermouth|1000">Martini Bianco Vermouth</option>
+<option value="1.04|40|Cinzano Rosso|1000">Cinzano Rosso</option>
+<option value="1.03|40|Cinzano Bianco|1000">Cinzano Bianco</option>
+<option value="0.99|40|Cinzano Extra Dry|1000">Cinzano Extra Dry</option>
+<option value="1.05|40|Mix për koktella|750">Mix për koktella</option>
+<option value="1.00|40|Aperitiv tjetër|700">Aperitiv tjetër</option>
+</optgroup>
+<optgroup label="Birrë">
+<option value="1.02|500|Birra Dukagjini Bure|20000">Birra Dukagjini Bure (fuçi)</option>
+</optgroup>
+</select></label>
+<div class="row2">
+<label for="vol">Madhësia e shishes
+<select id="vol"><option value="200">0.20 L</option><option value="330">0.33 L</option><option value="500">0.50 L</option><option value="700" selected>0.70 L</option><option value="750">0.75 L</option><option value="1000">1.00 L</option><option value="1500">1.50 L</option><option value="1750">1.75 L</option><option value="20000">20.00 L</option></select></label>
+<div><span class="lbl">Doza</span>
+<div class="dose"><b>4 cl</b><span>e fiksuar</span></div>
+<input id="dose" type="hidden" value="40"></div>
+</div>
+<div>
+<label for="cur">Sa peshon shishja tani</label>
+<div class="lcd">
+<span class="cap">Pesha në peshore</span>
+<div class="in"><input id="cur" type="number" inputmode="decimal" placeholder="0" aria-label="Sa peshon shishja tani (g)"><span class="u">g</span></div>
+</div>
+</div>
+<details>
+<summary>Pesha e shishes (ruhet vetë)</summary>
+<div class="row2" style="margin-top:8px">
+<label for="full">Shishja e plotë (g)
+<input id="full" type="number" inputmode="decimal" placeholder="nuk e di"></label>
+<label for="empty">Shishja e zbrazët (g)
+<input id="empty" type="number" inputmode="decimal" placeholder="nuk e di"></label>
+</div>
+<button type="button" class="mini" id="wsave">Ruaj peshën</button>
+<button type="button" class="mini" id="wdel" hidden>Fshi këtë pije</button>
+</details>
+<p class="err" id="err" role="alert"></p>
+</section>
+
+<section class="card vm">
+<div class="res">
+<div class="gauge" aria-hidden="true"><div class="neck"></div><div class="body"><div id="fill"></div></div><i class="tk" style="bottom:25%"></i><i class="tk" style="bottom:50%"></i><i class="tk" style="bottom:75%"></i></div>
+<div class="stats">
+<div class="stat hero"><small>Mbetur</small><b id="ml">0.00</b><i>L</i><em class="raw" id="mlraw">0 ml</em></div>
+<div class="stat"><small>Përqindja</small><b id="pct">0</b></div>
+<div class="stat"><small>Doza (4 cl)</small><b id="doses">0</b></div>
+<div class="stat"><small>Konsumuar (L)</small><b id="used">0.00</b></div>
+</div>
+</div>
+<p class="note" id="note"></p>
+<button class="pri" id="add" type="button">Shto në listë</button>
+</section>
+
+<section class="card vm" id="listcard">
+<div class="head"><h2>Lista e inventarit</h2></div>
+<div id="list"></div>
+<div class="tot" id="tot" style="display:none"><span>Totali</span><span id="totv"></span></div>
+<button id="clear" type="button" style="margin-top:14px;display:none">Pastro listën</button>
+<div class="acts" id="acts" hidden>
+<button id="copy" type="button">Kopjo tekstin</button>
+<button id="xl" type="button">Shkarko Excel</button>
+</div>
+<div class="savebox" id="savebox" hidden>
+<label for="sname">Emri i shankut (ruhet dhe vazhdon me të radhës)</label>
+<div class="sv"><input id="sname" type="text" value="Bar1" maxlength="40" autocomplete="off"><button class="pri" id="save" type="button" style="width:auto;margin-top:6px">Ruaj</button></div>
+</div>
+<p class="msg" id="msg" role="status"></p>
+<textarea id="cp" hidden readonly aria-label="Teksti i inventarit"></textarea>
+</section>
+
+<section class="card" id="savedcard" hidden>
+<p class="empty" id="svempty">Ende asgjë e ruajtur. Kur të prekësh "Ruaj", shanku shfaqet këtu.</p>
+<div class="head"><h2>Inventarët e ruajtur</h2></div>
+<p class="hint">Çdo shank i ruajtur mbetet këtu me datën e tij.</p>
+<div id="saved"></div>
+<div class="acts" id="allacts" hidden>
+<button id="cpall" type="button">Kopjo të gjitha</button>
+<button id="xlall" type="button">Excel të gjitha</button>
+</div>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let cur=null,items=[],sizes={},wts={},touched=false,saved=[],COL=null;
+try{wts=JSON.parse(localStorage.getItem('bar_weights')||'{}')||{}}catch(e){wts={}}
+function wkey(){return $('type').value.split('|')[2]+'|'+$('vol').value}
+const DEF={"Jim Beam|700":{"f":"1200","est":1},"Uiski tjetër|700":{"f":"1150","est":1},"Rum tjetër|700":{"f":"1160","est":1},"Bacardi Black|1000":{"f":"1520"},"Captain Morgan Gold|700":{"f":"1083"},"Mix për koktella|750":{"f":"1079"},"Martini Bianco Vermouth|1000":{"f":"1612"},"Birra Dukagjini Bure|20000":{"f":"25150","e":"4820"},"Absolut|1000":{"f":"1601"},"Smirnoff|1000":{"f":"1469"},"Grey Goose|750":{"f":"1450","est":1},"Belvedere|700":{"f":"1229"},"Finlandia|1000":{"f":"1550","est":1},"Stolichnaya|1000":{"f":"1550","est":1},"Russian Standard|1000":{"f":"1550","est":1},"Vodka tjetër|700":{"f":"1150","est":1},"Jack Daniel's|1000":{"f":"1515"},"Johnnie Walker|1000":{"f":"1462"},"Jameson|1000":{"f":"1560","est":1},"Chivas Regal|700":{"f":"1320","est":1},"Ballantine's|1000":{"f":"1558"},"Jim Beam|1000":{"f":"1515"},"Glenfiddich|700":{"f":"1350","est":1},"J&B|1000":{"f":"1566"},"Hennessy|700":{"f":"1178"},"Rémy Martin|700":{"f":"1380","est":1},"Courvoisier|700":{"f":"1226"},"Skenderbeu|700":{"f":"1180","est":1},"Metaxa|700":{"f":"1250","est":1},"Konjak tjetër|700":{"f":"1180","est":1},"Rakia e rrushit|500":{"f":"850","est":1},"Rakia e kumbullës|500":{"f":"850","est":1},"Rakia e mollës|500":{"f":"850","est":1},"Rakia tjetër|500":{"f":"850","est":1},"Bacardi|1000":{"f":"1517"},"Captain Morgan Black|1000":{"f":"1540","est":1},"Havana Club|700":{"f":"1160","est":1},"Gordon's|1000":{"f":"1493"},"Beefeater|1000":{"f":"1540","est":1},"Tanqueray|700":{"f":"1243"},"Bombay Sapphire|700":{"f":"1280"},"Xhin tjetër|700":{"f":"1160","est":1},"Jose Cuervo|1000":{"f":"1550","est":1},"Olmeca|700":{"f":"1220","est":1},"Sierra|1000":{"f":"1626"},"Tekila tjetër|700":{"f":"1150","est":1},"Baileys|700":{"f":"1420","est":1},"Amaretto|700":{"f":"1380","est":1},"Kahlúa|700":{"f":"1230"},"Malibu|700":{"f":"1220","est":1},"Sambuca|700":{"f":"1269"},"Limoncello|700":{"f":"1300","est":1},"Liker tjetër|700":{"f":"1250","est":1},"Jägermeister|700":{"f":"1350","est":1},"Ouzo|700":{"f":"1150","est":1},"Campari|1000":{"f":"1642"},"Aperol|1000":{"f":"1663"},"Drambuie|700":{"f":"1343"},"Martini Rosso|1000":{"f":"1652"},"Martini Bianco|1000":{"f":"1652"},"Ardbeg Ten|700":{"f":"1282"},"Canadian Special Old|700":{"f":"1308"},"Verak 25|700":{"f":"1646"},"Tanqueray Blackcurrant Royale|700":{"f":"1257"},"Liker Shege (shtëpie)|1000":{"f":"1471"},"Aperitiv tjetër|700":{"f":"1200","est":1},"Aperol|700":{"f":"1220","est":1},"Martini Rosso|750":{"f":"1220","est":1},"Martini Bianco|750":{"f":"1220","est":1},"Olmeca|1000":{"f":"1600","est":1},"Sierra|700":{"f":"1260","est":1},"Jägermeister|1000":{"f":"1758"},"Jägermeister|500":{"f":"980","est":1},"Baileys|1000":{"f":"1645"},"Campari|700":{"f":"1240","est":1},"Beefeater|700":{"f":"1180","est":1},"Tanqueray|1000":{"f":"1750","est":1},"Bombay Sapphire|1000":{"f":"1736"},"Hendrick's|1000":{"f":"1850","est":1},"Hendrick's|700":{"f":"1258"},"Jose Cuervo|700":{"f":"1200","est":1},"Metaxa|1000":{"f":"1650","est":1},"Bacardi|700":{"f":"1180","est":1},"Captain Morgan Black|700":{"f":"1075"},"Havana Club|1000":{"f":"1550","est":1},"Gordon's|700":{"f":"1180","est":1},"Glenfiddich|1000":{"f":"1750","est":1},"Hennessy|1000":{"f":"1820","est":1},"Rémy Martin|1000":{"f":"1800","est":1},"Courvoisier|1000":{"f":"1780","est":1},"Skenderbeu|1000":{"f":"1580","est":1},"Skenderbeu|500":{"f":"890","est":1},"Jack Daniel's|700":{"f":"1250","est":1},"Jack Daniel's|500":{"f":"950","est":1},"Johnnie Walker|700":{"f":"1071"},"Jameson|700":{"f":"1142"},"Chivas Regal|1000":{"f":"1537"},"Ballantine's|700":{"f":"1200","est":1},"Absolut|700":{"f":"1220","est":1},"Smirnoff|700":{"f":"1200","est":1},"Grey Goose|1000":{"f":"1820","est":1},"Grey Goose|700":{"f":"1246"},"Belvedere|1000":{"f":"1850","est":1},"Finlandia|700":{"f":"1200","est":1},"Ciroc|700":{"f":"1383"},"Au Vodka|700":{"f":"1517"},"Pushkin Black|700":{"f":"1226"},"Pushkin Red|700":{"f":"1234"},"Jack Daniel's Honey|700":{"f":"1184"},"Badel Lavov|1000":{"f":"1476"},"Stock|1000":{"f":"1654"},"Monkey 47|500":{"f":"905"},"Cointreau|700":{"f":"1367"},"Disaronno|700":{"f":"1475"},"Fernet|700":{"f":"1168"},"Malibu|1000":{"f":"1613"},"Montenegro Amaro|700":{"f":"1219"},"Ramazzotti Amaro|700":{"f":"1258"},"Monin Triple Sec (shurup)|700":{"f":"1307"},"Rakia e kumbullës|1000":{"f":"1505"},"Rakia e mollës|1000":{"f":"1411","e":"508"},"Rakia tjetër|1000":{"f":"1500","est":1},"Raki Rushi|750":{"f":"1333"},"Viljamovka|1000":{"f":"1613"},"Rakia e rrushit|1000":{"f":"1500","est":1},"Dashni me Brina|700":{"f":"1554"},"Dimple|1000":{"f":"1677"},"Johnnie Walker Swing|750":{"f":"1366"},"Metaxa|750":{"f":"1298"},"Pernod|700":{"f":"1299"},"Pushkin White|700":{"f":"1151"},"Raki Arre|1000":{"f":"1505"},"Raki Ftoni|1000":{"f":"1396"},"Southern Comfort|700":{"f":"1207"},"Tanqueray Ten|750":{"f":"1272"},"Ursus|700":{"f":"1218"},"Vodka Fire&Ice|1000":{"f":"1680"},"White Horse|750":{"f":"1202"},"Yeni Raki|700":{"f":"1108"},"Johnnie Walker Red|1000":{"f":"1462"},"Cinzano Rosso|1000":{"f":"1605","est":1},"Cinzano Rosso|750":{"f":"1285","est":1},"Cinzano Bianco|1000":{"f":"1600","est":1},"Cinzano Bianco|750":{"f":"1285","est":1},"Cinzano Extra Dry|1000":{"f":"1525","est":1},"Cinzano Extra Dry|750":{"f":"1225","est":1},"Archers|700":{"f":"1250","est":1}};
+// Dendësia profesionale: ρ(alkool-ujë, 20°C) + 0.00038 × sheqeri (g/L). [dendësia e vjetër, e re]; INFO = [alkooli %, sheqeri g/L]
+const DENS={"Aperitiv tjetër":[1,1.025],"Aperol":[1.04,1.04],"Campari":[1.05,1.052],"Jägermeister":[1,1.006],"Martini Bianco":[0.99,1.032],"Martini Bianco Vermouth":[1,1.032],"Martini Rosso":[0.99,1.036],"Mix për koktella":[1.05,1.048],"Ouzo":[0.95,0.957],"Badel Lavov":[0.95,0.96],"Courvoisier":[0.948,0.95],"Hennessy":[0.948,0.95],"Konjak tjetër":[0.948,0.95],"Metaxa":[0.948,0.959],"Rémy Martin":[0.948,0.95],"Skenderbeu":[0.948,0.952],"Stock":[0.95,0.957],"Verak 25":[0.95,0.948],"Amaretto":[1.08,1.064],"Baileys":[1.05,1.057],"Cointreau":[1.04,1.024],"Dashni me Brina":[1.05,1.069],"Disaronno":[1.08,1.064],"Drambuie":[1.08,1.062],"Fernet":[1,0.969],"Kahlúa":[1.08,1.128],"Liker Shege (shtëpie)":[1.05,1.069],"Liker tjetër":[1.08,1.069],"Limoncello":[1.05,1.079],"Malibu":[1.03,1.036],"Monin Triple Sec (shurup)":[1.25,1.245],"Montenegro Amaro":[1.05,1.058],"Pernod":[0.95,0.956],"Ramazzotti Amaro":[1.05,1.046],"Sambuca":[1,1.081],"Southern Comfort":[1.04,1.005],"Raki Arre":[0.948,0.948],"Raki Ftoni":[0.948,0.948],"Raki Rushi":[0.948,0.945],"Rakia e kumbullës":[0.948,0.948],"Rakia e mollës":[0.948,0.948],"Rakia e rrushit":[0.948,0.948],"Rakia tjetër":[0.948,0.948],"Viljamovka":[0.948,0.948],"Yeni Raki":[0.945,0.939],"Bacardi":[0.945,0.952],"Bacardi Black":[0.945,0.952],"Captain Morgan Black":[0.945,0.948],"Captain Morgan Gold":[0.945,0.967],"Havana Club":[0.945,0.952],"Rum tjetër":[0.945,0.948],"Jose Cuervo":[0.948,0.951],"Olmeca":[0.948,0.956],"Sierra":[0.948,0.951],"Tekila tjetër":[0.948,0.951],"Ardbeg Ten":[0.948,0.938],"Ballantine's":[0.948,0.948],"Canadian Special Old":[0.948,0.948],"Chivas Regal":[0.948,0.948],"Dimple":[0.948,0.948],"Glenfiddich":[0.948,0.948],"J&B":[0.948,0.948],"Jack Daniel's":[0.948,0.948],"Jack Daniel's Honey":[1.03,0.994],"Jameson":[0.948,0.948],"Jim Beam":[0.948,0.948],"Johnnie Walker":[0.948,0.948],"Johnnie Walker Red":[0.948,0.948],"Johnnie Walker Swing":[0.948,0.948],"Uiski tjetër":[0.948,0.948],"White Horse":[0.948,0.948],"Absolut":[0.948,0.948],"Au Vodka":[0.948,0.948],"Belvedere":[0.948,0.948],"Ciroc":[0.948,0.948],"Finlandia":[0.948,0.948],"Grey Goose":[0.948,0.948],"Pushkin Black":[0.98,1.042],"Pushkin Red":[0.98,1.041],"Pushkin White":[0.98,0.952],"Russian Standard":[0.948,0.948],"Smirnoff":[0.948,0.952],"Stolichnaya":[0.948,0.948],"Ursus":[0.948,0.948],"Vodka Fire&Ice":[0.948,0.948],"Vodka tjetër":[0.948,0.948],"Beefeater":[0.945,0.948],"Bombay Sapphire":[0.945,0.948],"Gordon's":[0.945,0.952],"Hendrick's":[0.945,0.946],"Monkey 47":[0.945,0.935],"Tanqueray":[0.945,0.943],"Tanqueray Blackcurrant Royale":[0.945,0.957],"Tanqueray Ten":[0.945,0.935],"Xhin tjetër":[0.945,0.948],"Cinzano Rosso":[1.04,1.036],"Cinzano Bianco":[1.03,1.032],"Cinzano Extra Dry":[0.99,0.987],"Archers":[1.07,1.071]};
+const INFO={"Aperitiv tjetër":[15,120],"Aperol":[11,150],"Campari":[25,220],"Jägermeister":[35,132],"Martini Bianco":[15,140],"Martini Bianco Vermouth":[15,140],"Martini Rosso":[15,150],"Mix për koktella":[0,130],"Ouzo":[40,25],"Badel Lavov":[36,15],"Courvoisier":[40,5],"Hennessy":[40,5],"Konjak tjetër":[40,5],"Metaxa":[38,20],"Rémy Martin":[40,5],"Skenderbeu":[40,10],"Stock":[38,15],"Verak 25":[40,0],"Amaretto":[28,260],"Baileys":[17,210],"Cointreau":[40,200],"Dashni me Brina":[20,250],"Disaronno":[28,260],"Drambuie":[40,300],"Fernet":[39,50],"Kahlúa":[16,395],"Liker Shege (shtëpie)":[20,250],"Liker tjetër":[20,250],"Limoncello":[28,300],"Malibu":[21,165],"Monin Triple Sec (shurup)":[0,650],"Montenegro Amaro":[23,230],"Pernod":[40,20],"Ramazzotti Amaro":[30,220],"Sambuca":[40,350],"Southern Comfort":[35,130],"Raki Arre":[40,0],"Raki Ftoni":[40,0],"Raki Rushi":[42,0],"Rakia e kumbullës":[40,0],"Rakia e mollës":[40,0],"Rakia e rrushit":[40,0],"Rakia tjetër":[40,0],"Viljamovka":[40,0],"Yeni Raki":[45,0],"Bacardi":[37.5,0],"Bacardi Black":[37.5,0],"Captain Morgan Black":[40,0],"Captain Morgan Gold":[35,30],"Havana Club":[37.5,0],"Rum tjetër":[40,0],"Jose Cuervo":[38,0],"Olmeca":[35,0],"Sierra":[38,0],"Tekila tjetër":[38,0],"Ardbeg Ten":[46,0],"Ballantine's":[40,0],"Canadian Special Old":[40,0],"Chivas Regal":[40,0],"Dimple":[40,0],"Glenfiddich":[40,0],"J&B":[40,0],"Jack Daniel's":[40,0],"Jack Daniel's Honey":[35,100],"Jameson":[40,0],"Jim Beam":[40,0],"Johnnie Walker":[40,0],"Johnnie Walker Red":[40,0],"Johnnie Walker Swing":[40,0],"Uiski tjetër":[40,0],"White Horse":[40,0],"Absolut":[40,0],"Au Vodka":[40,0],"Belvedere":[40,0],"Ciroc":[40,0],"Finlandia":[40,0],"Grey Goose":[40,0],"Pushkin Black":[16.6,170],"Pushkin Red":[17.5,170],"Pushkin White":[37.5,0],"Russian Standard":[40,0],"Smirnoff":[37.5,0],"Stolichnaya":[40,0],"Ursus":[40,0],"Vodka Fire&Ice":[40,0],"Vodka tjetër":[40,0],"Beefeater":[40,0],"Bombay Sapphire":[40,0],"Gordon's":[37.5,0],"Hendrick's":[41.4,0],"Monkey 47":[47.5,0],"Tanqueray":[43.1,0],"Tanqueray Blackcurrant Royale":[41.3,30],"Tanqueray Ten":[47.3,0],"Xhin tjetër":[40,0],"Cinzano Rosso":[15,150],"Cinzano Bianco":[15,140],"Cinzano Extra Dry":[18,30],"Archers":[18,250]};
+function loadW(){const k=wkey(),w=wts[k]||{},d=DEF[k]||{};$('full').value=w.f||d.f||'';$('empty').value=w.e||d.e||''}
+function saveW(){wts[wkey()]={f:$('full').value.trim(),e:$('empty').value.trim()};try{localStorage.setItem('bar_weights',JSON.stringify(wts))}catch(e){}touched=true;sync()}
+try{sizes=JSON.parse(localStorage.getItem('bar_sizes')||'{}')||{}}catch(e){sizes={}}
+try{items=JSON.parse(localStorage.getItem('bar_items')||'[]')||[]}catch(e){items=[]}
+try{saved=JSON.parse(localStorage.getItem('bar_saved')||'[]')||[]}catch(e){saved=[]}
+function save(){touched=true;try{localStorage.setItem('bar_items',JSON.stringify(items))}catch(e){}sync()}
+const GLASS={200:160,330:200,350:300,500:380,700:480,750:520,1000:600,1500:900,1750:1000};
+function calc(){
+cur=null;
+const v=+$('vol').value,d=+$('dose').value,c=+$('cur').value,fR=$('full').value.trim(),eR=$('empty').value.trim();
+const _q=$('type').value.split('|'),_d=DENS[_q[2]];let dens=(_d&&Math.abs(+_q[0]-_d[0])<1e-9)?_d[1]:+_q[0],e,f,src;
+['ml','pct','doses','used'].forEach(k=>$(k).textContent='0');$('ml').textContent='0.00';$('used').textContent='0.00';$('mlraw').textContent='0 ml';$('fill').style.height='0%';
+if(!(c>0)){$('err').textContent='';$('note').textContent='Shkruaj sa peshon shishja tani.';return}
+if(fR!==''&&eR!==''){f=+fR;e=+eR;if(!(f>e)){$('err').textContent='Shishja e plotë duhet të peshojë më shumë se e zbrazëta.';return}dens=(f-e)/v;src='Rezultati llogaritet nga peshat e tua.'}
+else if(fR!==''){f=+fR;e=f-v*dens;src='Rezultat i mirë, bazuar në peshën e plotë që e shkrove.';const k=wkey(),D=DEF[k];if(D&&D.est&&!(wts[k]&&wts[k].f)&&fR===D.f)src='Pesha e plotë është e vlerësuar nga lista, jo e matur, ndaj gabimi mund të arrijë rreth 60 ml. Për më saktë, peshoje një shishe të re të mbyllur dhe shkruaje te "Kam pesha të sakta".'}
+else if(eR!==''){e=+eR;f=e+v*dens;src='Rezultat i mirë, bazuar në peshën e zbrazët që e shkrove.'}
+else{e=GLASS[v]||480;f=e+v*dens;src='Rezultat përafërsisht (gabim rreth 50-100 ml), sepse xhami ndryshon nga marka. Për më saktë, shto peshën e plotë ose të zbrazët më lart.'}
+if(c<e-5){$('err').textContent='Shishja peshon më pak se një shishe e zbrazët. Kontrollo peshën.';return}
+if(c>f+5){$('err').textContent='Shishja peshon më shumë se një shishe e plotë. Kontrollo peshën.';return}
+$('err').textContent='';
+{const _i=INFO[_q[2]];$('note').textContent=src+(_i&&_d&&Math.abs(+_q[0]-_d[0])<1e-9?' Pija: '+_i[0]+'% alkool, '+(_i[1]?_i[1]+' g/L sheqer':'pa sheqer')+', dendësia '+dens.toFixed(3)+' kg/L.':'')}
+const ml=Math.max(0,Math.min(v,(c-e)/dens)),ds=Math.round(ml/d*10)/10;
+$('ml').textContent=(Math.round(ml)/1000).toFixed(2);$('mlraw').textContent=Math.round(ml)+' ml';
+$('pct').textContent=Math.round(ml/v*100)+'%';
+$('doses').textContent=ds;
+$('used').textContent=(Math.round(v-ml)/1000).toFixed(2);
+$('fill').style.height=(ml/v*100)+'%';
+cur={ml:Math.round(ml),pct:Math.round(ml/v*100),doses:ds};
+}
+function pad(n){return String(n).padStart(2,'0')}
+function dstr(iso){const d=new Date(iso);return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()}
+function L2(ml){return (ml/1000).toFixed(2)}
+function sums(list){let ml=0,ds=0;list.forEach(x=>{ml+=x.ml;ds+=x.doses});return{ml:ml,ds:Math.round(ds*10)/10}}
+function txtOf(name,iso,list){const t=sums(list);return ['Inventari '+name+' · '+dstr(iso)].concat(list.map(x=>x.name+': '+L2(x.ml)+' L ('+x.pct+'%) · '+x.doses+' doza')).concat(['Totali: '+L2(t.ml)+' L · '+t.ds+' doza']).join('\n')}
+function say(t){const m=$('msg');m.textContent=t;clearTimeout(say.t);say.t=setTimeout(()=>{m.textContent=''},6000)}
+async function copyText(t){
+try{await navigator.clipboard.writeText(t);$('cp').hidden=true;say('U kopjua. Ngjite në Notes ose në email.');return}catch(e){}
+const c=$('cp');c.hidden=false;c.value=t;c.focus();c.select();say('Shtyp gjatë mbi tekstin, zgjidh "Copy" dhe ngjite në Notes ose në email.')
+}
+function fileBase(name,iso){return (name.replace(/[^A-Za-z0-9_-]+/g,'_').replace(/^_+|_+$/g,'')||'Inventari')+'_'+iso.slice(0,10)}
+async function saveFile(fn,data){
+try{const dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;if(dl){await dl.save({filename:fn,data:data});say('Skedari është gati.');return}}catch(e){if(e&&e.code==='declined')return}
+try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data]));a.download=fn;document.body.appendChild(a);a.click();a.remove();say('Skedari u shkarkua.')}catch(e){say('Shkarkimi nuk punon këtu. Përdor "Kopjo".')}
+}
+function rowsFor(list){const t=sums(list);return [['Pija','Mbetur (L)','Mbetur (ml)','Përqindja (%)','Doza (4 cl)']].concat(list.map(x=>[x.name,+L2(x.ml),x.ml,x.pct,x.doses])).concat([['Totali',+L2(t.ml),t.ml,'',t.ds]])}
+function aggregate(recs){const m={};recs.forEach(r=>r.items.forEach(x=>{const e=m[x.name]||(m[x.name]={name:x.name,ml:0,doses:0,n:0});e.ml+=x.ml;e.doses+=x.doses;e.n++}));return Object.keys(m).sort((a,b)=>a.localeCompare(b)).map(k=>({name:k,ml:m[k].ml,doses:Math.round(m[k].doses*10)/10,n:m[k].n}))}
+function ordered(){return saved.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:a.name.localeCompare(b.name,undefined,{numeric:true}))}
+function sumRows(ag){let ml=0,ds=0;ag.forEach(e=>{ml+=e.ml;ds+=e.doses});ds=Math.round(ds*10)/10;return [['Pija','Mbetur (L)','Mbetur (ml)','Doza (4 cl)','Shishe']].concat(ag.map(e=>[e.name,+L2(e.ml),e.ml,e.doses,e.n])).concat([['Totali',+L2(ml),ml,ds,'']])}
+function txtAll(){
+const rs=ordered(),ag=aggregate(rs);let ml=0,ds=0;ag.forEach(e=>{ml+=e.ml;ds+=e.doses});
+const tot=['GJITHSEJ ('+rs.length+' shanqe)'].concat(ag.map(e=>e.name+': '+L2(e.ml)+' L · '+e.doses+' doza'+(e.n>1?' ('+e.n+' shishe)':''))).concat(['Totali: '+L2(ml)+' L · '+Math.round(ds*10)/10+' doza']);
+return rs.map(r=>txtOf(r.name,r.date,r.items)).concat([tot.join('\n')]).join('\n\n');
+}
+function nextName(n){const m=/^(.*?)(\d+)\s*$/.exec(n);return m?m[1]+(parseInt(m[2],10)+1):n+' 2'}
+function sheetName(n,used){let b=(n.replace(/[\[\]:*?\/\\]/g,' ').trim().slice(0,28))||'Shank',x=b,k=2;while(used[x]){x=b+' '+k++}used[x]=1;return x}
+async function exportAll(){
+const rs=ordered(),iso=new Date().toISOString(),sr=sumRows(aggregate(rs));
+if(window.XLSX){
+const wb=XLSX.utils.book_new(),used={};
+const add=(nm,rows,w)=>{const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=w;XLSX.utils.book_append_sheet(wb,ws,sheetName(nm,used))};
+add('Gjithsej',sr,[{wch:34},{wch:12},{wch:12},{wch:12},{wch:8}]);
+rs.forEach(r=>add(r.name,rowsFor(r.items),[{wch:34},{wch:12},{wch:12},{wch:14},{wch:12}]));
+await saveFile(fileBase('Gjithsej',iso)+'.xlsx',XLSX.write(wb,{bookType:'xlsx',type:'array'}));
+}else{
+const q=rows=>rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\r\n');
+const parts=[['GJITHSEJ'],...sr].length?[q([['GJITHSEJ']])+'\r\n'+q(sr)]:[];
+rs.forEach(r=>parts.push(q([[r.name+' · '+dstr(r.date)]])+'\r\n'+q(rowsFor(r.items))));
+await saveFile(fileBase('Gjithsej',iso)+'.csv','\ufeff'+parts.join('\r\n\r\n'));
+}
+}
+async function exportXl(name,iso,list){
+const rows=rowsFor(list);
+if(window.XLSX){
+const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:34},{wch:12},{wch:12},{wch:14},{wch:12}];
+const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Inventari');
+await saveFile(fileBase(name,iso)+'.xlsx',XLSX.write(wb,{bookType:'xlsx',type:'array'}));
+}else{
+await saveFile(fileBase(name,iso)+'.csv','﻿'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\r\n'));
+}
+}
+function alert0(){const b=$('tab2');b.textContent='Pastro listën fillimisht';setTimeout(()=>{b.innerHTML='Të ruajturat<b id="cnt">'+saved.length+'</b>'},2500)}
+function arm(btn,label,fn){let t=null;btn.onclick=()=>{if(t===null){btn.textContent='Sigurt?';t=setTimeout(()=>{t=null;btn.textContent=label},3000);return}clearTimeout(t);t=null;btn.textContent=label;fn()}}
+function saveLocalSaved(){try{localStorage.setItem('bar_saved',JSON.stringify(saved))}catch(e){}}
+let view=1,target=null,edit=null;
+function setView(v){view=v;document.querySelectorAll('.vm').forEach(e=>e.hidden=v!==1);$('savedcard').hidden=v!==2;$('tab1').setAttribute('aria-selected',v===1);$('tab2').setAttribute('aria-selected',v===2);$('listcard').hidden=v!==1||!!target;$('tgt').hidden=!((target||edit)&&v===1);window.scrollTo({top:0})}
+function endEdit(){const w=edit&&edit.rec?2:1;edit=null;$('add').textContent='Shto në listë';$('cur').value='';calc();setView(w)}
+$('tgtx').onclick=()=>{if(edit){endEdit();return}target=null;setView(2)};
+function startEdit(arr,idx,rec){
+const x=arr[idx];let tv=null,vv=null;
+if(x.t){tv=x.t;vv=x.v}else{let best=null;[...$('type').options].forEach(o=>{const n=o.value.split('|')[2];if(x.name.startsWith(n+' ')&&(!best||n.length>best.n.length))best={o:o,n:n}});
+if(best){tv=best.o.value;const rest=x.name.slice(best.n.length+1);const vo=[...$('vol').options].find(o=>o.text===rest);vv=vo?vo.value:null}}
+if(!tv){say('Kjo pije nuk gjendet në listë. Fshije dhe shtoje përsëri.');return}
+target=null;edit={arr:arr,idx:idx,rec:rec};
+$('type').value=tv;pick();if(vv)$('vol').value=vv;loadW();$('cur').value=x.g||'';calc();
+$('tgtn').textContent='Po ndryshon peshën: '+x.name;$('add').textContent='Ruaj ndryshimin';setView(1);$('cur').focus()}
+$('tab1').onclick=()=>{setView(1)};$('tab2').onclick=()=>setView(2);
+function renderSaved(){
+const S=$('saved');S.textContent='';
+$('cnt').textContent=saved.length;$('svempty').hidden=!!saved.length;$('allacts').hidden=saved.length<2;
+saved.forEach(r=>{
+const t=sums(r.items);
+const row=document.createElement('div');row.className='row sr';
+const n=document.createElement('div');n.className='n';
+const a=document.createElement('div');a.className='nm';a.textContent=r.name;
+const s2=document.createElement('small');s2.textContent=dstr(r.date)+' · '+r.items.length+' shishe · '+L2(t.ml)+' L';
+n.append(a,s2);
+const bt=document.createElement('div');bt.className='btns';
+const mk=(label)=>{const b=document.createElement('button');b.type='button';b.textContent=label;bt.appendChild(b);return b};
+const bp=mk('Shto pije'),bo=mk('Hap'),bc=mk('Kopjo'),bx=mk('Excel'),bd=mk('Fshi');
+const dt=document.createElement('div');dt.className='det';dt.hidden=true;
+r.items.forEach((x,xi)=>{const d=document.createElement('div');d.className='di';const a1=document.createElement('span');a1.textContent=x.name;const b1=document.createElement('b');b1.textContent=(x.ml/1000).toFixed(2)+' L · '+x.pct+'%';const be=document.createElement('button');be.type='button';be.textContent='Ndrysho';be.style.cssText='margin:0 0 0 8px;width:auto;padding:4px 10px;font-size:13px';be.onclick=()=>startEdit(r.items,xi,r);d.append(a1,b1,be);dt.appendChild(d)});
+const tt=document.createElement('div');tt.className='di tt';const ta=document.createElement('span');ta.textContent='Totali';const tb=document.createElement('b');tb.textContent=L2(t.ml)+' L';tt.append(ta,tb);dt.appendChild(tt);
+bp.onclick=()=>{target=r;$('tgtn').textContent='Po shton te '+r.name+' ('+r.items.length+' shishe)';setView(1)};
+bo.onclick=()=>{dt.hidden=!dt.hidden;bo.textContent=dt.hidden?'Hap':'Mbyll'};
+bc.onclick=()=>copyText(txtOf(r.name,r.date,r.items));
+bx.onclick=()=>exportXl(r.name,r.date,r.items);
+arm(bd,'Fshi',()=>{saved=saved.filter(x=>x.id!==r.id);saveLocalSaved();if(COL)COL.doc(r.id).delete().catch(()=>{});renderSaved()});
+row.append(n,bt);const wr=document.createElement('div');wr.append(row,dt);S.appendChild(wr);
+});
+}
+$('cpall').onclick=()=>copyText(txtAll());
+$('xlall').onclick=()=>exportAll();
+$('copy').onclick=()=>copyText(txtOf($('sname').value.trim()||'Bar1',new Date().toISOString(),items));
+$('xl').onclick=()=>exportXl($('sname').value.trim()||'Bar1',new Date().toISOString(),items);
+try{const sn=localStorage.getItem('bar_name');if(sn)$('sname').value=sn}catch(e){}
+$('save').onclick=()=>{
+if(!items.length)return;
+const nm=$('sname').value.trim()||'Bar1';
+try{localStorage.setItem('bar_name',nm)}catch(e){}
+const rec={id:'inv_'+Date.now(),name:nm,date:new Date().toISOString(),items:items.map(x=>Object.assign({},x))};
+saved.unshift(rec);saveLocalSaved();
+if(COL)COL.doc(rec.id).set(rec).catch(()=>{});
+const nx=nextName(nm);$('sname').value=nx;try{localStorage.setItem('bar_name',nx)}catch(e){}
+items=[];save();render();renderSaved();
+say('✓ U ruajt si "'+nm+'" (shiko te "Të ruajturat"). Vazhdo me "'+nx+'".');
+};
 function render(){
- const t=[["num","Numëro"]];for(let b=1;b<=5;b++)t.push([b,nm(b)+" ("+st.inv.filter(x=>x.bar===b).length+")"]);t.push(["tot","Totali"]);
- $("tabs").innerHTML=t.map(([k,l])=>'<button data-v="'+k+'" aria-pressed="'+(String(view)===String(k))+'">'+l+"</button>").join("");
- const isBar=typeof view==="number";$("p-num").hidden=view!=="num";$("p-bar").hidden=!isBar;$("p-tot").hidden=view!=="tot";
- if(isBar){const it=st.inv.filter(x=>x.bar===view);$("bt").textContent=nm(view);
-  $("inv").innerHTML=it.length?it.map(x=>'<div class="li"><span>'+esc(x.name)+'</span><span><b>'+fx(x.l)+' L</b><button data-id="'+x.id+'" aria-label="Fshi">×</button></span></div>').join("")+
-  '<div class="tot"><span>Totali '+nm(view)+"</span><span>"+fx(it.reduce((s,x)=>s+x.l,0))+" L</span></div>":'<div class="empty">Ende asgjë në '+nm(view)+". Peshoje një shishe te faqja Numëro.</div>"}
- if(view==="tot"){const r=agg();if(!r.length){$("tt").innerHTML='<tr><td class="empty">Ende asgjë. Shto shishe nga faqja Numëro.</td></tr>';return}
-  const cs=[0,0,0,0,0];r.forEach(x=>x.b.forEach((v,i)=>cs[i]+=v));
-  $("tt").innerHTML="<thead><tr><th>Pija</th>"+[1,2,3,4,5].map(i=>"<th>B"+i+"</th>").join("")+"<th>Totali</th></tr></thead><tbody>"+
-  r.map(x=>"<tr><td>"+esc(x.n)+"</td>"+x.b.map(v=>"<td>"+(v?fx(v):"–")+"</td>").join("")+"<td><b>"+fx(x.b.reduce((a,b)=>a+b,0))+"</b></td></tr>").join("")+
-  "</tbody><tfoot><tr><td>Totali (L)</td>"+cs.map(v=>"<td>"+fx(v)+"</td>").join("")+"<td>"+fx(cs.reduce((a,b)=>a+b,0))+"</td></tr></tfoot>"}}
-$("bars").innerHTML=[1,2,3,4,5].map(b=>'<button data-b="'+b+'" aria-pressed="'+(st.bar===b)+'">'+nm(b)+"</button>").join("");
-$("bars").onclick=e=>{const b=+e.target.dataset.b;if(!b)return;st.bar=b;save();barSel()};
-$("tabs").onclick=e=>{const v=e.target.dataset.v;if(!v)return;view=isNaN(+v)?v:+v;render();window.scrollTo(0,0)};
-$("w").oninput=calc;$("ce").oninput=cal;$("cf").oninput=cal;
-$("add").onclick=()=>{if(!last)return;st.inv.push({id:Date.now()+Math.random(),bar:st.bar,code:last.p[0],name:last.p[1],l:last.l});save();render();
- $("ok").textContent="U shtua te "+nm(st.bar)+": "+last.p[1]+" – "+fx(last.l)+" L";$("w").value="";$("q").value="";calc();$("q").focus()};
-$("inv").onclick=e=>{const id=e.target.dataset.id;if(!id)return;st.inv=st.inv.filter(x=>String(x.id)!==id);save();render()};
-$("clr").onclick=()=>{if(confirm("Të fshihen shishet e "+nm(view)+"?")){st.inv=st.inv.filter(x=>x.bar!==view);save();render()}};
-$("clra").onclick=()=>{if(st.inv.length&&confirm("Të fshihet i gjithë inventari i të 5 bar-eve?")){st.inv=[];save();render()}};
-$("cp").onclick=()=>copy(st.inv.filter(x=>x.bar===view).map(x=>x.name+"\t"+fx(x.l)+" L").join("\n"),"cp","Kopjo si tekst");
-$("cpt").onclick=()=>{const r=agg();copy("Pija\tB1\tB2\tB3\tB4\tB5\tTotali\n"+r.map(x=>[x.n,...x.b.map(fx),fx(x.b.reduce((a,b)=>a+b,0))].join("\t")).join("\n"),"cpt","Kopjo tabelën")};
-render();calc();
-const HASH="baf33cf60a7235de1bfe276395d1cb842ddcb75956d7dd808e494c6be26e139d",SALT="rakiat-salt-v1";
-async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(SALT+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
-function unlock(){$("lock").hidden=true;$("app").hidden=false;try{sessionStorage.setItem("rakiat-ok","1")}catch(e){}}
-function lockUp(){$("lock").hidden=false;$("app").hidden=true;$("lp").value="";try{sessionStorage.removeItem("rakiat-ok")}catch(e){}}
-async function tryPw(){const e=$("le");e.textContent="";
- try{if(await sha($("lp").value)===curHash()){unlock()}else{e.textContent="Fjalëkalimi nuk është i saktë.";$("lp").value="";$("lp").focus()}}
- catch(x){e.textContent="Ky shfletues nuk e mbështet kontrollin e fjalëkalimit. Hape linkun në Safari ose Chrome."}}
-$("lb").onclick=tryPw;$("lp").onkeydown=e=>{if(e.key==="Enter")tryPw()};$("out").onclick=lockUp;
-try{if(sessionStorage.getItem("rakiat-ok")==="1")unlock()}catch(e){}
+const L=$('list');L.textContent='';
+if(!items.length){const p=document.createElement('p');p.className='empty';p.textContent='Lista është bosh. Peshoje një shishe dhe shtoje këtu.';L.appendChild(p)}
+let tm=0,td=0;
+items.forEach((it,i)=>{
+tm+=it.ml;td+=it.doses;
+const r=document.createElement('div');r.className='row';
+const n=document.createElement('div');n.className='n';
+const a=document.createElement('div');a.className='nm';a.textContent=it.name;
+const s=document.createElement('small');s.textContent=(it.ml/1000).toFixed(2)+' L · '+it.pct+'% · '+it.doses+' doza';
+const bar=document.createElement('div');bar.className='bar';const bi=document.createElement('i');bi.style.width=Math.max(0,Math.min(100,it.pct))+'%';bar.appendChild(bi);n.append(a,s,bar);
+const b=document.createElement('button');b.type='button';b.textContent='Fshi';b.setAttribute('aria-label','Fshi '+it.name);
+b.onclick=()=>{items.splice(i,1);save();render()};
+r.append(n,b);L.appendChild(r);
+});
+$('tot').style.display=items.length?'flex':'none';
+$('clear').style.display=items.length?'block':'none';
+$('totv').textContent=(tm/1000).toFixed(2)+' L · '+Math.round(td*10)/10+' doza';
+$('acts').hidden=!items.length;$('savebox').hidden=!items.length;
+if(!items.length)$('cp').hidden=true;
+}
+function pick(){const q=$('type').value.split('|');$('vol').value=sizes[q[2]]||q[3];loadW();calc()}
+$('vol').addEventListener('change',()=>{const q=$('type').value.split('|');sizes[q[2]]=$('vol').value;try{localStorage.setItem('bar_sizes',JSON.stringify(sizes))}catch(e){}touched=true;sync();loadW();calc()});
+['full','empty'].forEach(i=>$(i).addEventListener('input',saveW));
+$('type').addEventListener('change',()=>{$('cur').value='';pick()});
+['vol','dose','full','empty','cur'].forEach(i=>{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
+$('add').onclick=()=>{
+calc();if(!cur)return;
+const nm=$('type').value.split('|')[2]+' '+($('vol').selectedOptions[0].text);
+const it={name:nm,ml:cur.ml,pct:cur.pct,doses:cur.doses,t:$('type').value,v:$('vol').value,g:+$('cur').value};
+if(edit){const E=edit;E.arr[E.idx]=it;if(E.rec){saveLocalSaved();if(COL)COL.doc(E.rec.id).set(E.rec).catch(()=>{});renderSaved()}else{save();render()}endEdit();say('✓ Pesha u ndryshua.');return}
+if(target){target.items.push(it);saveLocalSaved();if(COL)COL.doc(target.id).set(target).catch(()=>{});renderSaved();$('tgtn').textContent='✓ U shtua te '+target.name+' ('+target.items.length+' shishe)';return}
+items.push(it);
+save();render();
+};
+let clr=null;
+$('clear').onclick=()=>{
+if(!clr){$('clear').textContent='Shtyp përsëri për ta fshirë të gjithë listën';clr=setTimeout(()=>{clr=null;$('clear').textContent='Pastro listën'},4000);return}
+clearTimeout(clr);clr=null;$('clear').textContent='Pastro listën';items=[];save();render()
+};
 
-let dl=null;try{claude.use("downloads").then(d=>{dl=d},()=>{})}catch(e){}
-document.querySelectorAll(".xl").forEach(b=>b.hidden=false);
-const today=()=>new Date().toISOString().slice(0,10),n2=v=>Math.round(v*100)/100;
-function barSheet(b){const m={};st.inv.filter(x=>x.bar===b).forEach(x=>{const k=x.code||x.name;(m[k]=m[k]||{n:x.name,c:0,l:0});m[k].c++;m[k].l+=x.l});
- const r=Object.values(m).sort((a,c)=>a.n.localeCompare(c.n)),n=r.length;
- return[nm(b),[["Pija","Shishe","Litra"],...r.map(x=>[x.n,x.c,n2(x.l)]),["Totali",{t:"n",v:r.reduce((s,x)=>s+x.c,0),f:"SUM(B2:B"+(n+1)+")"},{t:"n",v:n2(r.reduce((s,x)=>s+x.l,0)),f:"SUM(C2:C"+(n+1)+")"}]],[34,9,10]]}
-function totSheet(){const r=agg(),n=r.length,L="BCDEFG",cs=[0,0,0,0,0];r.forEach(x=>x.b.forEach((v,i)=>cs[i]+=v));
- return["Totali",[["Pija","Bari 1","Bari 2","Bari 3","Bari 4","Bari 5","Totali"],
-  ...r.map((x,i)=>[x.n,...x.b.map(n2),{t:"n",v:n2(x.b.reduce((a,c)=>a+c,0)),f:"SUM(B"+(i+2)+":F"+(i+2)+")"}]),
-  ["Totali (L)",...cs.map((v,i)=>({t:"n",v:n2(v),f:"SUM("+L[i]+"2:"+L[i]+(n+1)+")"})),{t:"n",v:n2(cs.reduce((a,c)=>a+c,0)),f:"SUM(G2:G"+(n+1)+")"}]],[34,9,9,9,9,9,10]]}
-const XT="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
-const crc=b=>{let c=-1;for(let i=0;i<b.length;i++)c=crcT[(c^b[i])&255]^(c>>>8);return(c^-1)>>>0};
-function zip(files){const te=new TextEncoder(),L=[],C=[],w16=(a,v)=>a.push(v&255,v>>8&255),w32=(a,v)=>a.push(v&255,v>>8&255,v>>16&255,v>>>24&255);let off=0;
- files.forEach(([n,s])=>{const nb=te.encode(n),d=te.encode(s),c=crc(d),h=[],e=[];
-  w32(h,0x04034b50);w16(h,20);w16(h,0x0800);w16(h,0);w16(h,0);w16(h,0x21);w32(h,c);w32(h,d.length);w32(h,d.length);w16(h,nb.length);w16(h,0);
-  L.push(Uint8Array.from(h),nb,d);
-  w32(e,0x02014b50);w16(e,20);w16(e,20);w16(e,0x0800);w16(e,0);w16(e,0);w16(e,0x21);w32(e,c);w32(e,d.length);w32(e,d.length);w16(e,nb.length);w16(e,0);w16(e,0);w16(e,0);w16(e,0);w32(e,0);w32(e,off);
-  C.push(Uint8Array.from(e),nb);off+=h.length+nb.length+d.length});
- const cs=C.reduce((s,a)=>s+a.length,0),en=[];w32(en,0x06054b50);w16(en,0);w16(en,0);w16(en,files.length);w16(en,files.length);w32(en,cs);w32(en,off);w16(en,0);
- const parts=[...L,...C,Uint8Array.from(en)],out=new Uint8Array(parts.reduce((s,a)=>s+a.length,0));let p=0;parts.forEach(a=>{out.set(a,p);p+=a.length});return out}
-const xe=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const NS='xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"',HD='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-function sheetXml(aoa,w){let h=HD+'<worksheet '+NS+'><cols>'+w.map((x,i)=>'<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+x+'" customWidth="1"/>').join("")+'</cols><sheetData>';
- aoa.forEach((row,r)=>{h+='<row r="'+(r+1)+'">';row.forEach((c,i)=>{const ref=String.fromCharCode(65+i)+(r+1),st=(r===0||/^Totali/.test(String(row[0])))?' s="1"':'';
-  if(c&&typeof c==="object")h+='<c r="'+ref+'"'+st+'><f>'+xe(c.f)+'</f><v>'+c.v+'</v></c>';
-  else if(typeof c==="number")h+='<c r="'+ref+'"'+st+'><v>'+c+'</v></c>';
-  else h+='<c r="'+ref+'"'+st+' t="inlineStr"><is><t>'+xe(c)+'</t></is></c>'});h+='</row>'});
- return h+'</sheetData></worksheet>'}
-function xlsx(sheets){const R="http://schemas.openxmlformats.org/officeDocument/2006/relationships",CT="application/vnd.openxmlformats-officedocument.spreadsheetml.";
- const f=[["[Content_Types].xml",HD+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="'+CT+'sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="'+CT+'styles+xml"/>'+sheets.map((s,i)=>'<Override PartName="/xl/worksheets/sheet'+(i+1)+'.xml" ContentType="'+CT+'worksheet+xml"/>').join("")+'</Types>'],
- ["_rels/.rels",HD+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="'+R+'/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
- ["xl/workbook.xml",HD+'<workbook '+NS+' xmlns:r="'+R+'"><sheets>'+sheets.map((s,i)=>'<sheet name="'+xe(s[0])+'" sheetId="'+(i+1)+'" r:id="rId'+(i+1)+'"/>').join("")+'</sheets></workbook>'],
- ["xl/_rels/workbook.xml.rels",HD+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+sheets.map((s,i)=>'<Relationship Id="rId'+(i+1)+'" Type="'+R+'/worksheet" Target="worksheets/sheet'+(i+1)+'.xml"/>').join("")+'<Relationship Id="rId'+(sheets.length+1)+'" Type="'+R+'/styles" Target="styles.xml"/></Relationships>'],
- ["xl/styles.xml",HD+'<styleSheet '+NS+'><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>']];
- sheets.forEach((s,i)=>f.push(["xl/worksheets/sheet"+(i+1)+".xml",sheetXml(s[1],s[2])]));return zip(f)}
-async function exp(sheets,fn,btn){const back="Eksporto në Excel";
- if(sheets[0][1].length<3){flash(btn,"Nuk ka çfarë të eksportohet",back);return}
- try{const data=xlsx(sheets);
-  if(dl){await dl.save({filename:fn,data:data.buffer})}
-  else{const f=new File([data],fn,{type:XT});
-   if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f]})}catch(e){if(e&&e.name==="AbortError")return;throw e}}
-   else{const a=document.createElement("a");a.href=URL.createObjectURL(f);a.download=fn;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000)}}
-  flash(btn,"U ruajt",back)}
- catch(e){flash(btn,e&&e.code==="declined"?back:"Eksporti dështoi",back)}}
-$("xb").onclick=()=>exp([barSheet(view)],"Inventari_"+nm(view).replace(" ","")+"_"+today()+".xlsx","xb");
-$("xt").onclick=()=>exp([totSheet(),...[1,2,3,4,5].filter(b=>st.inv.some(x=>x.bar===b)).map(barSheet)],"Inventari_Totali_"+today()+".xlsx","xt");
+function norm(t){return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,' ').replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim()}
+const OPT=[...$('type').options].map(o=>({o,n:norm(o.value.split('|')[2]),g:o.parentElement.label||''}));
+function searchRun(){
+const q=norm($('q').value),R=$('sr');R.textContent='';
+if(!q){R.hidden=true;return}
+const w=q.split(' ');
+const m=OPT.filter(x=>w.every(t=>x.n.includes(t)));
+m.sort((a,b)=>(b.n.startsWith(w[0])-a.n.startsWith(w[0]))||a.n.localeCompare(b.n));
+R.hidden=false;
+if(!m.length){const p=document.createElement('p');p.className='none';p.textContent='Nuk u gjet asnjë pije. Provo një emër tjetër ose zgjidhe nga lista më poshtë.';R.appendChild(p);return}
+m.slice(0,8).forEach(x=>{
+const b=document.createElement('button');b.type='button';b.className='hit';
+const t=document.createElement('span');t.textContent=x.o.value.split('|')[2];
+const g=document.createElement('small');g.textContent=x.g;
+b.append(t,g);
+b.onclick=()=>choose(x.o);
+R.appendChild(b);
+});
+}
+function choose(o){
+$('type').value=o.value;$('cur').value='';
+$('q').value='';$('sr').hidden=true;$('sr').textContent='';
+pick();$('cur').focus();
+}
+$('q').addEventListener('input',searchRun);
+$('q').addEventListener('keydown',e=>{
+if(e.key==='Enter'){const b=$('sr').querySelector('.hit');if(b){e.preventDefault();b.click()}}
+if(e.key==='Escape'){$('q').value='';searchRun()}
+});
+let customs=[];try{customs=JSON.parse(localStorage.getItem('bar_custom')||'[]')||[]}catch(e){customs=[]}
+function saveCustoms(){try{localStorage.setItem('bar_custom',JSON.stringify(customs))}catch(e){}if(typeof updMy==='function'&&$('mybtn'))updMy()}
+const GM={'Vodka':'Vodka','Uiski':'Uiski','Konjak / brandy':'Konjak dhe brandy','Rakia':'Rakia','Rum':'Rum','Xhin':'Xhin','Tekila':'Tekila','Liker':'Liker','Aperitiv':'Aperitiv dhe të tjera','Tjetër':'Aperitiv dhe të tjera'};
+function addCustomOption(c){
+const val=c.d+'|40|'+c.name+'|'+c.v;
+const ex=[...$('type').options].find(o=>o.value===val);if(ex)return ex;
+const GFIX={'LongMorn':'Uiski','Glen Morangie':'Uiski','Chivas Regal 18':'Uiski','Gin Fire&Ice':'Xhin','Courvaizie VSOP':'Konjak dhe brandy'};
+const gl=c.g||GFIX[c.name]||'';
+let g=gl&&[...$('type').querySelectorAll('optgroup')].find(x=>x.label===gl);
+if(!g){g=document.getElementById('gmy');if(!g){g=document.createElement('optgroup');g.id='gmy';g.label='Pijet e mia';$('type').appendChild(g)}}
+const o=document.createElement('option');o.value=val;o.textContent=c.name;o.dataset.my='1';
+const after=[...g.children].find(x=>x.textContent.localeCompare(c.name,'sq')>0);
+if(after)g.insertBefore(o,after);else g.appendChild(o);
+OPT.push({o:o,n:norm(c.name),g:g.label});
+return o;
+}
+function isCustom(o){return !!(o&&o.dataset&&o.dataset.my==='1')}
+function delCustom(c){
+const o=[...$('type').options].find(x=>x.value===c.d+'|40|'+c.name+'|'+c.v)||[...$('type').options].find(x=>isCustom(x)&&x.value.split('|')[2]===c.name&&x.value.split('|')[3]===c.v);
+customs=customs.filter(x=>!(x.name===c.name&&x.v===c.v));saveCustoms();
+delete wts[c.name+'|'+c.v];try{localStorage.setItem('bar_weights',JSON.stringify(wts))}catch(err){}
+if(o){const i=OPT.findIndex(x=>x.o===o);if(i>=0)OPT.splice(i,1);const was=$('type').selectedOptions[0]===o;o.remove();if(was){$('type').selectedIndex=0;pick()}}
+touched=true;sync();updDel();updMy();
+}
+function updMy(){
+const vis=customs.filter(c=>!c.hid);$('mybtn').textContent='📋 Pijet e mia ('+vis.length+')';
+const L=$('mylist');if(L.hidden)return;
+L.textContent='';
+const nt=document.createElement('p');nt.className='empty';nt.textContent='Pijet që ke shtuar ti. Shtyp emrin për ta hapur. "Hiq" e heq vetëm nga kjo listë, pija mbetet në listën e pijeve.';L.appendChild(nt);
+if(!vis.length){const p=document.createElement('p');p.className='empty';p.textContent='Lista është bosh.';L.appendChild(p);return}
+vis.slice().sort((a,b)=>a.name.localeCompare(b.name,'sq')).forEach(c=>{
+const r=document.createElement('div');r.style.cssText='display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line,rgba(255,255,255,.12))';
+const w=wts[c.name+'|'+c.v]||{};
+const bits=[(+c.v/1000).toFixed(2)+' L'];
+if(w.f)bits.push('plotë '+w.f+' g');
+if(w.e)bits.push('zbrazët '+w.e+' g');
+if(!w.f&&!w.e)bits.push('pa peshë');
+const n=document.createElement('div');n.style.cssText='min-width:0;cursor:pointer';
+const a1=document.createElement('div');a1.style.cssText='font-weight:700;overflow-wrap:anywhere';a1.textContent=c.name;
+const s2=document.createElement('div');s2.style.cssText='font-size:13px;opacity:.75;margin-top:2px';s2.textContent=bits.join(' · ');
+n.append(a1,s2);
+n.onclick=()=>{const o=[...$('type').options].find(x=>x.value===c.d+'|40|'+c.name+'|'+c.v);if(o){choose(o);$('mylist').hidden=true;window.scrollTo({top:0,behavior:'smooth'})}};
+const bd=document.createElement('button');bd.type='button';bd.textContent='Hiq';bd.style.cssText='width:auto;margin:0;padding:8px 14px;min-width:64px';
+r.append(n,bd);L.appendChild(r);
+arm(bd,'Hiq',()=>{c.hid=true;saveCustoms();touched=true;sync();say('U hoq nga kjo listë. Pija mbetet në listën e pijeve.')});
+});
+}
+$('mybtn').onclick=()=>{const L=$('mylist');L.hidden=!L.hidden;updMy()};
+function updDel(){const o=$('type').selectedOptions[0];$('wdel').hidden=!isCustom(o)}
+customs.forEach(addCustomOption);updMy();
+const PRE=[{d:'0.948',name:'LongMorn',v:'700',g:'Uiski'},{d:'0.948',name:'Glen Morangie',v:'700',g:'Uiski'},{d:'0.948',name:'Chivas Regal 18',v:'700',g:'Uiski'},{d:'0.945',name:'Gin Fire&Ice',v:'1000',g:'Xhin'},{d:'0.948',name:'Courvaizie VSOP',v:'1000',g:'Konjak dhe brandy'}];
+PRE.forEach(c=>addCustomOption(c));
+Object.assign(DEF,{"Chivas Regal 18|700":{"e":"955"},"Courvaizie VSOP|1000":{"e":"697"},"Gin Fire&Ice|1000":{"f":"1618"},"Glen Morangie|700":{"e":"470"},"LongMorn|700":{"e":"779"},"Viljamovka|1000":{"f":"1613","e":"662"},"Disaronno|1000":{"e":"836"},"Fernet|700":{"f":"1147"},"Hendrick's|700":{"f":"1243"},"Malibu|1000":{"f":"1624"},"Southern Comfort|700":{"f":"1200"},"White Horse|750":{"f":"1191"}});
+if(!sizes['Disaronno'])sizes['Disaronno']='1000';
 
-const curHash=()=>{try{return localStorage.getItem("rakiat-pw")||HASH}catch(e){return HASH}};
-$("pwb").onclick=async()=>{const m=$("pwm"),o=$("pw0").value,n=$("pw1").value,r=$("pw2").value;m.style.color="";
- try{if(await sha(o)!==curHash()){m.textContent="Fjalëkalimi aktual nuk është i saktë.";return}
-  if(n.length<6){m.textContent="Fjalëkalimi i ri duhet të ketë të paktën 6 shkronja.";return}
-  if(n!==r){m.textContent="Dy fjalëkalimet e reja nuk përputhen.";return}
-  localStorage.setItem("rakiat-pw",await sha(n));["pw0","pw1","pw2"].forEach(i=>$(i).value="");m.style.color="var(--ok)";m.textContent="Fjalëkalimi u ndryshua në këtë pajisje."}
- catch(e){m.textContent="Ndryshimi nuk u ruajt. Kontrollo që shfletuesi lejon ruajtjen e të dhënave."}};
-
-const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-function suggest(){const v=norm($("q").value.trim()),sl=$("sl"),cf=$("cat").value;if(cur()){sl.hidden=true;return}
- const m=D.filter(p=>(!cf||p[8]===cf)&&(!v||norm(lab(p)).includes(v)));let c="",h="";
- m.forEach(p=>{if(p[8]!==c){c=p[8];h+='<div class="gh">'+esc(c)+"</div>"}const q=props(p);
-  h+='<button type="button" data-c="'+p[0]+'">'+esc(p[1])+"<small>plotë "+q.f.toFixed(3)+" kg · bosh "+q.e.toFixed(3)+" kg · "+p[2]+" L</small></button>"});
- sl.innerHTML=m.length?h:'<div class="empty" style="padding:12px">Nuk u gjet asnjë pije.</div>';sl.hidden=false}
-[...new Set(D.map(p=>p[8]))].forEach(c=>$("cat").add(new Option(c,c)));
-$("cat").onchange=()=>{$("q").value="";calc();suggest()};
-$("sl").onclick=e=>{const b=e.target.closest("button");if(!b)return;const p=D.find(x=>x[0]===b.dataset.c);$("q").value=lab(p);$("sl").hidden=true;calc();$("w").focus()};
-$("q").oninput=()=>{calc();suggest()};$("q").onfocus=suggest;
-if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)&&!window.claude)navigator.serviceWorker.register("sw.js").catch(()=>{});
-</script></body></html>
+let DBREF=null,syncT=null,syncBusy=false,syncAgain=false;
+function sync(){if(!DBREF)return;clearTimeout(syncT);syncT=setTimeout(push,600)}
+async function push(){
+if(!DBREF)return;
+if(syncBusy){syncAgain=true;return}
+syncBusy=true;
+try{await DBREF.set({v:1,items:items,wts:wts,sizes:sizes,custom:customs})}catch(e){}
+syncBusy=false;
+if(syncAgain){syncAgain=false;push()}
+}
+function okItem(x){return x&&typeof x.name==='string'&&isFinite(x.ml)&&isFinite(x.pct)&&isFinite(x.doses)}
+async function cloudInit(){
+try{
+if(!window.claude||!window.claude.use)return;
+const db=await window.claude.use('db'),user=await window.claude.use('user');
+if(!db||!user)return;
+const id=await user.id();if(!id)return;
+const ref=db.doc('data/users/'+id+'/inventar');COL=db.collection('data/users/'+id);
+const snap=await ref.get();
+const d=snap.exists?(snap.data()||{}):null;
+if(d&&!touched){
+if(Array.isArray(d.items))items=d.items.filter(okItem);
+if(d.wts&&typeof d.wts==='object')wts=Object.assign({},wts,d.wts);
+if(d.sizes&&typeof d.sizes==='object')sizes=Object.assign({},sizes,d.sizes);
+if(Array.isArray(d.custom))d.custom.forEach(c=>{if(c&&c.name&&!customs.some(x=>x.name===c.name&&x.v===c.v)){customs.push(c);addCustomOption(c)}});
+saveCustoms();
+try{localStorage.setItem('bar_items',JSON.stringify(items));localStorage.setItem('bar_weights',JSON.stringify(wts));localStorage.setItem('bar_sizes',JSON.stringify(sizes))}catch(e){}
+render();loadW();calc();
+DBREF=ref;
+}else{
+DBREF=ref;
+if(touched||items.length||customs.length||Object.keys(wts).length)push();
+}
+try{
+const sc=await COL.get();
+const cloud=sc.docs.filter(d=>d.id.indexOf('inv_')===0).map(d=>Object.assign({id:d.id},d.data())).filter(r=>r&&r.name&&r.date&&Array.isArray(r.items));
+const have={};cloud.forEach(r=>{have[r.id]=1});
+const merged=cloud.slice();
+saved.forEach(r=>{if(!have[r.id]){merged.push(r);COL.doc(r.id).set(r).catch(()=>{})}});
+merged.sort((a,b)=>a.date<b.date?1:-1);
+saved=merged;saveLocalSaved();renderSaved();
+try{if(!localStorage.getItem('bar_name')&&saved.length){const lt=ordered().pop();$('sname').value=nextName(lt.name)}}catch(e){}
+}catch(e){}
+}catch(e){}
+}
+$('nv').innerHTML=$('vol').innerHTML;$('nv').value='1000';
+$('newbtn').onclick=()=>{const f=$('newform');f.hidden=!f.hidden;if(!f.hidden)$('nn').focus()};
+$('ncancel').onclick=()=>{$('newform').hidden=true;$('nerr').textContent=''};
+$('nsave').onclick=()=>{
+const name=$('nn').value.replace(/[|]/g,' ').replace(/\s+/g,' ').trim(),d=$('ng').value,v=$('nv').value,f=+$('nf').value,e=$('ne').value.trim()===''?0:+$('ne').value;
+if(!name){$('nerr').textContent='Shkruaj emrin e pijes.';return}
+if(!(f>0)&&!(e>0)){$('nerr').textContent='Shkruaj peshën e shishes së plotë ose të zbrazët (në gram).';return}
+if(f>0&&e&&!(f>e)){$('nerr').textContent='Pesha e plotë duhet të jetë më e madhe se e zbrazëta.';return}
+if(f>0&&f<+v*0.5){$('nerr').textContent='Pesha duket shumë e vogël për këtë madhësi. Kontrollo numrin.';return}
+if(!(f>0)&&e<+v*0.1){$('nerr').textContent='Pesha e zbrazët duket shumë e vogël. Kontrollo numrin.';return}
+$('nerr').textContent='';
+const c={name:name,d:d,v:v,g:GM[$('ng').selectedOptions[0].text]||''};
+const ec=customs.find(x=>x.name===name&&x.v===v);if(!ec){customs.push(c);saveCustoms()}else if(ec.hid){delete ec.hid;saveCustoms()}
+const o=addCustomOption(c);
+wts[name+'|'+v]={f:f>0?String(f):'',e:e?String(e):''};
+try{localStorage.setItem('bar_weights',JSON.stringify(wts))}catch(err){}
+touched=true;sync();
+$('type').value=o.value;pick();updDel();
+$('nn').value='';$('nf').value='';$('ne').value='';$('newform').hidden=true;
+say('U ruajt "'+name+'". Tani shkruaj peshën në peshore.');window.scrollTo({top:0,behavior:'smooth'});
+};
+$('wsave').onclick=()=>{
+const f=$('full').value.trim(),e=$('empty').value.trim();
+if(f===''&&e===''){say('Shkruaj fillimisht peshën e plotë ose të zbrazët.');return}
+saveW();
+const nm=$('type').value.split('|')[2]+' '+$('vol').selectedOptions[0].text;
+say('U ruajt pesha për '+nm+'.');
+};
+$('type').addEventListener('change',updDel);
+const _choose=choose;choose=function(o){_choose(o);updDel()};
+let delT=null;
+$('wdel').onclick=()=>{
+const o=$('type').selectedOptions[0];if(!isCustom(o))return;
+if(delT===null){$('wdel').textContent='Sigurt? Prek përsëri';delT=setTimeout(()=>{delT=null;$('wdel').textContent='Fshi këtë pije'},3000);return}
+clearTimeout(delT);delT=null;$('wdel').textContent='Fshi këtë pije';
+const p=o.value.split('|');delCustom({d:p[0],name:p[2],v:p[3]});say('Pija u fshi.');
+};
+updDel();
+cloudInit();
+pick();render();renderSaved();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}</script>
+</body>
+</html>
